@@ -1,0 +1,18 @@
+d_jview_homepage:
+    path:     /
+    defaults: { _controller: DJviewBundle:Default:index }
+    
+    
+d_jview_detailfigure:
+    path:    /figure
+    defaults: {_controller: DJviewBundle:Default:detailfigure}
+    
+
+d_jview_inscription:
+    path:    /inscription
+    defaults: {_controller: DJviewBundle:Default:inscription}
+    
+    
+d_jview_connection:
+    path:    /connection
+    defaults: {_controller: DJviewBundle:Default:connection}

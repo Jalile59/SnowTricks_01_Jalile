@@ -1,0 +1,7 @@
+d_jview:
+    resource: "@DJviewBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

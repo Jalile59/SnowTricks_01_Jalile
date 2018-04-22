@@ -1,0 +1,8 @@
+services:
+#    d_jview.example:
+#        class: DJ\viewBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+services:
+    dj_view.jalservice:
+       class: DJ\viewBundle\Jalservice\DJJalservice
