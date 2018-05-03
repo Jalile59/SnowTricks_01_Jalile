@@ -31,6 +31,18 @@ class DefaultController extends Controller
         return $this->render('DJviewBundle:Advert:connection.html.twig');
     }
     
+    public function addfiguresAction(){
+        
+        $figure = new \DJ\viewBundle\Entity\Figures();
+        
+        $form = $this->createForm(\DJ\viewBundle\Form\FiguresType::class);
+        
+        
+        return $this->render('DJviewBundle:Advert:addfigure.html.twig',
+                array('form'=>$form->createView())
+                );
+    }
+    
     
     
 }
