@@ -45,7 +45,7 @@ class Figures
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="figure_updatedate", type="datetime")
+     * @ORM\Column(name="figure_updatedate", type="datetime", nullable=true)
      */
     private $figureUpdatedate;
 

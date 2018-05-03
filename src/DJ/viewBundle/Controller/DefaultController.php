@@ -31,11 +31,25 @@ class DefaultController extends Controller
         return $this->render('DJviewBundle:Advert:connection.html.twig');
     }
     
-    public function addfiguresAction(){
+    public function addfiguresAction(Request $request){
         
         $figure = new \DJ\viewBundle\Entity\Figures();
         
-        $form = $this->createForm(\DJ\viewBundle\Form\FiguresType::class);
+        $form = $this->createForm(\DJ\viewBundle\Form\FiguresType::class, $figure);
+        
+        
+        if($request->isMethod('POST')){
+            
+            $figure->setFigureCreatedate(new \DateTime());
+            
+            $form->handleRequest($request);
+
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($figure);
+//            die(var_dump($em));
+            $em->flush();
+        }
         
         
         return $this->render('DJviewBundle:Advert:addfigure.html.twig',

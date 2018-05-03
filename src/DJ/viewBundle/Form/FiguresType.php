@@ -13,7 +13,7 @@ class FiguresType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('figureName')
+        $builder->add('figure_Name')
                 ->add('figureDescription')
                 ->add('save', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class)
                 ;

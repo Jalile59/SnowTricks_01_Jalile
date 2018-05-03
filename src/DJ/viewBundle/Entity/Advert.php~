@@ -32,4 +32,3 @@ class Advert
         return $this->id;
     }
 }
-
