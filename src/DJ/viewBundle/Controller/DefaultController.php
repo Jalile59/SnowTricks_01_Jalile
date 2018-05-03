@@ -34,11 +34,14 @@ class DefaultController extends Controller
     public function addfiguresAction(Request $request){
         
         $figure = new \DJ\viewBundle\Entity\Figures();
+        $nimage = new \DJ\viewBundle\Entity\Pictures;
         
         $form = $this->createForm(\DJ\viewBundle\Form\FiguresType::class, $figure);
         
         
         if($request->isMethod('POST')){
+            
+            $figure->addPicture($nimage);
             
             $figure->setFigureCreatedate(new \DateTime());
             

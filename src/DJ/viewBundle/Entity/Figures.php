@@ -11,7 +11,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="DJ\viewBundle\Repository\FiguresRepository")
  */
 class Figures
-{
+{   
+    /**
+     *@ORM\OneToMany(targetEntity=Pictures::class, cascade={"persist", "remove"}, mappedBy="figure")
+     * @var int
+     */
+    
+    
+    
+    private $picture;
     /**
      * @var int
      *
@@ -154,5 +162,51 @@ class Figures
     public function getFigureUpdatedate()
     {
         return $this->figureUpdatedate;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->picture = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add picture
+     *
+     * @param \DJ\viewBundle\Entity\Pictures $picture
+     *
+     * @return Figures
+     */
+    public function addPicture(\DJ\viewBundle\Entity\Pictures $picture)
+    {
+        $this->picture[] = $picture;
+        $picture->setFigure($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove picture
+     *
+     * @param \DJ\viewBundle\Entity\Pictures $picture
+     */
+    public function removePicture(\DJ\viewBundle\Entity\Pictures $picture)
+    {
+        $this->picture->removeElement($picture);
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+    
+    public function __toString() {
+        return $this->figureName;
     }
 }

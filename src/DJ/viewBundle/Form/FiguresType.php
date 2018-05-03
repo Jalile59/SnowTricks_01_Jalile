@@ -15,6 +15,13 @@ class FiguresType extends AbstractType
     {
         $builder->add('figure_Name')
                 ->add('figureDescription')
+                ->add('picture', \Symfony\Component\Form\Extension\Core\Type\CollectionType::class, array(
+                        'entry_type'   => PicturesType::class,
+                        'prototype' => true,
+                        'by_reference'=> false,
+                        'allow_add'    => true,                      
+                        'allow_delete' => true
+                      ))
                 ->add('save', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class)
                 ;
     }/**

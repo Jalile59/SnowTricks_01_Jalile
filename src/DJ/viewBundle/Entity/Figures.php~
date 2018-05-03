@@ -11,7 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="DJ\viewBundle\Repository\FiguresRepository")
  */
 class Figures
-{
+{   
+    /**
+     *@ORM\OneToMany(targetEntity=Pictures::class, cascade={"persist", "remove"}, mappedBy="figure")
+     * @var int
+     */
+    
+    private $picture;
     /**
      * @var int
      *
@@ -45,7 +51,7 @@ class Figures
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="figure_updatedate", type="datetime", nullable=false)
+     * @ORM\Column(name="figure_updatedate", type="datetime", nullable=true)
      */
     private $figureUpdatedate;
 
