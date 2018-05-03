@@ -13,7 +13,7 @@ class PicturesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('pictureLink');
+        $builder->add('pictureLink', \Symfony\Component\Form\Extension\Core\Type\TextType::class, array('label'=> 'Lien image'));
     }/**
      * {@inheritdoc}
      */

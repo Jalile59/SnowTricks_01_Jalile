@@ -13,8 +13,8 @@ class FiguresType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('figure_Name')
-                ->add('figureDescription')
+        $builder->add('figure_Name', \Symfony\Component\Form\Extension\Core\Type\TextType::class)
+                ->add('figureDescription', \Symfony\Component\Form\Extension\Core\Type\TextareaType::class)
                 ->add('picture', \Symfony\Component\Form\Extension\Core\Type\CollectionType::class, array(
                         'entry_type'   => PicturesType::class,
                         'prototype' => true,
