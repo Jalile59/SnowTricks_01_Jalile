@@ -64,9 +64,18 @@ class Pictures
      *
      * @return Pictures
      */
-    public function setPictureLink($pictureLink)
+    public function setPictureLink( $pictureLink)
     {
-        $this->pictureLink = $pictureLink;
+        
+        $nname = $this->newname($pictureLink);
+        
+        $test = $pictureLink->getClientOriginalExtension();
+        
+        $pictureLink->move('../web/images/', $nname);
+        
+        $this->pictureLink = $nname;
+        dump($test);
+        dump($pictureLink);
 
         return $this;
     }
@@ -129,6 +138,15 @@ class Pictures
         return $this->figure;
     }
     
+    public function newname($pictureLink){
+        
+        $name = md5(uniqid()).'.'.$pictureLink->getClientOriginalExtension();
+        
+        return $name;
+        
+    }
+
+
 //    public function __toString() {
 //        return $this->pictureLink;
 //    }

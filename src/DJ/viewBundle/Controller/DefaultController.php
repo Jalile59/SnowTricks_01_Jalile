@@ -41,16 +41,19 @@ class DefaultController extends Controller
         
         if($request->isMethod('POST')){
             
-            $figure->addPicture($nimage);
+            $file=$figure->getPicture();
+            
+            dump($file);
             
             $figure->setFigureCreatedate(new \DateTime());
             
             $form->handleRequest($request);
-
+            
+            $file = $figure->getPicture();
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($figure);
-//            die(var_dump($em));
+//            die(var_dump($file));
             $em->flush();
         }
         

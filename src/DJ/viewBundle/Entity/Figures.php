@@ -3,6 +3,8 @@
 namespace DJ\viewBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Figures
@@ -14,7 +16,8 @@ class Figures
 {   
     /**
      *@ORM\OneToMany(targetEntity=Pictures::class, cascade={"persist", "remove"}, mappedBy="figure")
-     * @var int
+     * 
+     *
      */
     
     
