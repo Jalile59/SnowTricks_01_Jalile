@@ -8,10 +8,21 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     public function indexAction()
-    {
-      
+    {   
         
-        return $this->render('DJviewBundle:Advert:index.html.twig');
+        $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->myfindall();
+        
+//        $test = $figure->getPicture();
+        
+        
+        
+   
+        dump($figure);
+
+        
+        return $this->render('DJviewBundle:Advert:index.html.twig', array(
+            'figure'=>$figure
+        ));
     }
     
     public function detailfigureAction()

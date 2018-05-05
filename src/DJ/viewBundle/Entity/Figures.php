@@ -15,13 +15,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Figures
 {   
     /**
+     *@ORM\Column(name="pictureAcceuil", type="string", length=255)
+     * @var string 
+     */
+    
+    private $pictureAcceuil;
+    
+    /**
      *@ORM\OneToMany(targetEntity=Pictures::class, cascade={"persist", "remove"}, mappedBy="figure")
      * 
      *
      */
-    
-    
-    
+
     private $picture;
     /**
      * @var int
@@ -42,7 +47,7 @@ class Figures
     /**
      * @var string
      *
-     * @ORM\Column(name="figure_description", type="string", length=255)
+     * @ORM\Column(name="figure_description", type="text")
      */
     private $figureDescription;
 
@@ -211,5 +216,45 @@ class Figures
     
     public function __toString() {
         return $this->figureName;
+    }
+
+    /**
+     * Set pictureAcceuil
+     *
+     * @param string $pictureAcceuil
+     *
+     * @return Figures
+     */
+    public function setPictureAcceuil($pictureAcceuil)
+    {   
+        
+        
+        
+        $name = $this->renamefile($pictureAcceuil);
+        
+        $pictureAcceuil->move('../web/imagesacueill/', $name);
+        
+
+        
+        $this->pictureAcceuil = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get pictureAcceuil
+     *
+     * @return string
+     */
+    public function getPictureAcceuil()
+    {
+        return $this->pictureAcceuil;
+    }
+    
+    public function renamefile($file)
+    {
+        
+        return $name = md5(uniqid()).'.'.$file->getClientOriginalExtension();
+        
     }
 }

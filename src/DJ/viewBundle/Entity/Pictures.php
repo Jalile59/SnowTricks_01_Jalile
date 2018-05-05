@@ -74,8 +74,7 @@ class Pictures
         $pictureLink->move('../web/images/', $nname);
         
         $this->pictureLink = $nname;
-        dump($test);
-        dump($pictureLink);
+
 
         return $this;
     }
@@ -139,8 +138,14 @@ class Pictures
     }
     
     public function newname($pictureLink){
-        
+            
+            
         $name = md5(uniqid()).'.'.$pictureLink->getClientOriginalExtension();
+
+        
+
+        
+        
         
         return $name;
         

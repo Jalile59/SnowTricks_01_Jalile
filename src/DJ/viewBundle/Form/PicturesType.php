@@ -13,7 +13,7 @@ class PicturesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('pictureLink', \Symfony\Component\Form\Extension\Core\Type\FileType::class);
+        $builder->add('pictureLink', \Symfony\Component\Form\Extension\Core\Type\FileType::class, array('label'=> false));
     }/**
      * {@inheritdoc}
      */
