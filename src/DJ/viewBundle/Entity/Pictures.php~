@@ -14,7 +14,7 @@ class Pictures
 {   
     /**
      * @ORM\ManyToOne(targetEntity=Figures::class, inversedBy="picture")
-     * @var int
+     * 
      */
     
     
@@ -43,6 +43,9 @@ class Pictures
      */
     private $pictureCreatedate;
 
+    public function __construct( ) {
+        $this->setPictureCreatedate(new \DateTime());
+    }
 
     /**
      * Get id
@@ -61,9 +64,17 @@ class Pictures
      *
      * @return Pictures
      */
-    public function setPictureLink($pictureLink)
+    public function setPictureLink( $pictureLink)
     {
-        $this->pictureLink = $pictureLink;
+        
+        $nname = $this->newname($pictureLink);
+        
+        $test = $pictureLink->getClientOriginalExtension();
+        
+        $pictureLink->move('../web/images/', $nname);
+        
+        $this->pictureLink = $nname;
+
 
         return $this;
     }
@@ -109,7 +120,7 @@ class Pictures
      *
      * @return Pictures
      */
-    public function setFigure(\DJ\viewBundle\Entity\Figures $figure = null)
+    public function setFigure(\DJ\viewBundle\Entity\Figures $figure )
     {
         $this->figure = $figure;
 
@@ -125,4 +136,21 @@ class Pictures
     {
         return $this->figure;
     }
+    
+    public function newname($pictureLink){
+            
+            
+        $name = md5(uniqid()).'.'.$pictureLink->getClientOriginalExtension();
+
+        
+
+        
+        
+        
+        return $name;
+        
+    }
+
+
+
 }

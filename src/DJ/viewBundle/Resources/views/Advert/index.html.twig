@@ -29,9 +29,23 @@
         <div class="row text-center">
             
             {%for figure in figure%}
-            <div class="col-md-2 col-sm-6 hero-feature card" style="margin: 15px; height: 400px;" >
+            <div class="col-md-2 col-sm-6 hero-feature card" style="margin: 15px; height: 450px;" >
                 <div class="thumbnail">
-                
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a>Auteur:</a>
+                        </div>
+                        <div class="col-md-2">
+                           <a href="#"><img src="../public/img/supprimer.png" alt=""></a>
+                        </div>
+                        <div class="col-md-2" style="align-content: center">
+                           <a href="#"><img src="../public/img/bouton-modifier_318-77528.jpg" alt=""></a> 
+                        </div>
+                        <div class="col-md-2" style="align-content: center">
+                           <a href="#"><img src="../public/img/valider.png" alt=""></a> 
+                        </div>  
+                    </div>
+                    
                     <img src="../imagesacueill/{{figure.pictureacceuil}}" alt="">
                     
                     <div class="caption">

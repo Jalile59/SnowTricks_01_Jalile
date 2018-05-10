@@ -152,7 +152,5 @@ class Pictures
     }
 
 
-//    public function __toString() {
-//        return $this->pictureLink;
-//    }
+
 }

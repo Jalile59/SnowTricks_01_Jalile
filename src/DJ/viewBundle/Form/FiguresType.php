@@ -15,13 +15,20 @@ class FiguresType extends AbstractType
     {
         $builder->add('figure_Name', \Symfony\Component\Form\Extension\Core\Type\TextType::class)
                 ->add('figureDescription', \Symfony\Component\Form\Extension\Core\Type\TextareaType::class)
-                ->add('pictureAcceuil', \Symfony\Component\Form\Extension\Core\Type\FileType::class, array('label'=> 'Image acceuil'))
+                ->add('videofigure', \Symfony\Component\Form\Extension\Core\Type\CollectionType::class, array(
+                        'entry_type'   => VideosType::class,
+                        'prototype' => true,
+                        'by_reference'=> false,
+                        'allow_add'    => true,    
+                        'label'=>'Video:',
+                        'allow_delete' => true
+                      ))                ->add('pictureAcceuil', \Symfony\Component\Form\Extension\Core\Type\FileType::class, array('label'=> 'Image acceuil'))
                 ->add('picture', \Symfony\Component\Form\Extension\Core\Type\CollectionType::class, array(
                         'entry_type'   => PicturesType::class,
                         'prototype' => true,
                         'by_reference'=> false,
                         'allow_add'    => true,    
-                        'label'=>'Image',
+                        'label'=>'Image:',
                         'allow_delete' => true
                       ))
                 ->add('save', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class)

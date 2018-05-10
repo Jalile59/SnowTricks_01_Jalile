@@ -15,6 +15,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Figures
 {   
     /**
+     *@ORM\OneToMany(targetEntity=Videos::class, cascade={"persist", "remove"}, mappedBy="figurevideo")
+     * 
+     *
+     */
+    private $videofigure;
+    
+    /**
      *@ORM\Column(name="pictureAcceuil", type="string", length=255)
      * @var string 
      */
@@ -177,6 +184,7 @@ class Figures
     public function __construct()
     {
         $this->picture = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->videofigure = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -256,5 +264,42 @@ class Figures
         
         return $name = md5(uniqid()).'.'.$file->getClientOriginalExtension();
         
+    }
+
+    /**
+     * Add video
+     *
+     * @param \DJ\viewBundle\Entity\Videos $video
+     *
+     * @return Figures
+     */
+    public function addVideofigure(\DJ\viewBundle\Entity\Videos $video)
+    {
+        $this->videofigure[]= $video;
+        $video->setFigurevideo($this);
+
+        
+
+        return $this;
+    }
+
+    /**
+     * Remove video
+     *
+     * @param \DJ\viewBundle\Entity\Videos $video
+     */
+    public function removeVideofigure(\DJ\viewBundle\Entity\Videos $video)
+    {
+        $this->videofigure->removeElement($video);
+    }
+
+    /**
+     * Get video
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVideofigure()
+    {
+        return $this->videofigure;
     }
 }
