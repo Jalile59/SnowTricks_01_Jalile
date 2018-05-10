@@ -21,3 +21,7 @@ d_jview_connection:
 d_jview_addfigure:
     path:    /ajoutFigure
     defaults: {_controller: DJviewBundle:Default:addfigures}
+
+d_jview_delfigure:
+    path:    /supprimerFigure/{id}
+    defaults: {_controller: DJviewBundle:Figure:delfigure}
