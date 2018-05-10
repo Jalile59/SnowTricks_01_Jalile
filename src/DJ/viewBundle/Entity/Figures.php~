@@ -3,6 +3,8 @@
 namespace DJ\viewBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Figures
@@ -11,7 +13,28 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="DJ\viewBundle\Repository\FiguresRepository")
  */
 class Figures
-{
+{   
+    /**
+     *@ORM\OneToMany(targetEntity=Videos::class, cascade={"persist", "remove"}, mappedBy="figurevideo")
+     * 
+     *
+     */
+    private $video;
+    
+    /**
+     *@ORM\Column(name="pictureAcceuil", type="string", length=255)
+     * @var string 
+     */
+    
+    private $pictureAcceuil;
+    
+    /**
+     *@ORM\OneToMany(targetEntity=Pictures::class, cascade={"persist", "remove"}, mappedBy="figure")
+     * 
+     *
+     */
+
+    private $picture;
     /**
      * @var int
      *
@@ -31,7 +54,7 @@ class Figures
     /**
      * @var string
      *
-     * @ORM\Column(name="figure_description", type="string", length=255)
+     * @ORM\Column(name="figure_description", type="text")
      */
     private $figureDescription;
 
@@ -45,7 +68,7 @@ class Figures
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="figure_updatedate", type="datetime")
+     * @ORM\Column(name="figure_updatedate", type="datetime", nullable=true)
      */
     private $figureUpdatedate;
 
@@ -155,5 +178,125 @@ class Figures
     {
         return $this->figureUpdatedate;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->picture = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->video = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add picture
+     *
+     * @param \DJ\viewBundle\Entity\Pictures $picture
+     *
+     * @return Figures
+     */
+    public function addPicture(\DJ\viewBundle\Entity\Pictures $picture)
+    {
+        $this->picture[] = $picture;
+        $picture->setFigure($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove picture
+     *
+     * @param \DJ\viewBundle\Entity\Pictures $picture
+     */
+    public function removePicture(\DJ\viewBundle\Entity\Pictures $picture)
+    {
+        $this->picture->removeElement($picture);
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+    
+    public function __toString() {
+        return $this->figureName;
+    }
+
+    /**
+     * Set pictureAcceuil
+     *
+     * @param string $pictureAcceuil
+     *
+     * @return Figures
+     */
+    public function setPictureAcceuil($pictureAcceuil)
+    {   
+        
+        
+        
+        $name = $this->renamefile($pictureAcceuil);
+        
+        $pictureAcceuil->move('../web/imagesacueill/', $name);
+        
+
+        
+        $this->pictureAcceuil = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get pictureAcceuil
+     *
+     * @return string
+     */
+    public function getPictureAcceuil()
+    {
+        return $this->pictureAcceuil;
+    }
+    
+    public function renamefile($file)
+    {
+        
+        return $name = md5(uniqid()).'.'.$file->getClientOriginalExtension();
+        
+    }
+
+    /**
+     * Add video
+     *
+     * @param \DJ\viewBundle\Entity\Videos $video
+     *
+     * @return Figures
+     */
+    public function addVideo(\DJ\viewBundle\Entity\Videos $video)
+    {
+        $this->video[] = $video;
+
+        return $this;
+    }
+
+    /**
+     * Remove video
+     *
+     * @param \DJ\viewBundle\Entity\Videos $video
+     */
+    public function removeVideo(\DJ\viewBundle\Entity\Videos $video)
+    {
+        $this->video->removeElement($video);
+    }
+
+    /**
+     * Get video
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+}

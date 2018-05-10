@@ -8,10 +8,21 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     public function indexAction()
-    {
-      
+    {   
         
-        return $this->render('DJviewBundle:Advert:index.html.twig');
+        $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->myfindall();
+        
+//        $test = $figure->getPicture();
+        
+        
+        
+   
+        dump($figure);
+
+        
+        return $this->render('DJviewBundle:Advert:index.html.twig', array(
+            'figure'=>$figure
+        ));
     }
     
     public function detailfigureAction()
@@ -31,11 +42,31 @@ class DefaultController extends Controller
         return $this->render('DJviewBundle:Advert:connection.html.twig');
     }
     
-    public function addfiguresAction(){
+    public function addfiguresAction(Request $request){
         
         $figure = new \DJ\viewBundle\Entity\Figures();
+        $nimage = new \DJ\viewBundle\Entity\Pictures;
         
-        $form = $this->createForm(\DJ\viewBundle\Form\FiguresType::class);
+        $form = $this->createForm(\DJ\viewBundle\Form\FiguresType::class, $figure);
+        
+        
+        if($request->isMethod('POST')){
+            
+            $file=$figure->getPicture();
+            
+            dump($file);
+            
+            $figure->setFigureCreatedate(new \DateTime());
+            
+            $form->handleRequest($request);
+            
+            $file = $figure->getPicture();
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($figure);
+//            die(var_dump($file));
+            $em->flush();
+        }
         
         
         return $this->render('DJviewBundle:Advert:addfigure.html.twig',

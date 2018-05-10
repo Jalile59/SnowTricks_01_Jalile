@@ -10,4 +10,30 @@ namespace DJ\viewBundle\Repository;
  */
 class FiguresRepository extends \Doctrine\ORM\EntityRepository
 {
-}
+    
+    public function myfindall()
+    {
+        $requry = $this->_em->createQuery('SELECT f FROM DJviewBundle:Figures f JOIN f.picture');
+//        $query = $em->createQuery("SELECT u FROM User u JOIN u.address a WHERE a.city = 'Berlin'");
+        
+        $resultats = $requry->getResult();
+        
+        return $resultats;
+    }
+    
+    public function getAdvertWithApplications()
+    {
+      $qb = $this
+        ->createQueryBuilder('a')
+        ->leftJoin('a.figurename', 'app')
+        ->addSelect('app')
+      ;
+
+      return $qb
+        ->getQuery()
+        ->getResult()
+      ;
+    }
+
+
+    }
