@@ -9,7 +9,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {   
-        
+        //test
         $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->myfindall();
         
 //        $test = $figure->getPicture();
