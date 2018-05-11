@@ -26,9 +26,20 @@ class DefaultController extends Controller
     }
     
     public function detailfigureAction()
-    {
+    {   
+        $id= 87;
+        $em = $this->getDoctrine()->getManager();
+        $figure = $em->find('DJviewBundle:Figures', $id);
+        dump($figure);
+        if($figure){
+            
+            return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array('figure'=>$figure));
+        }else{
+            
+            throw $this->createNotFoundException('Cette figure n\'existe pas !');
+        }
         
-        return $this->render('DJviewBundle:Advert:viewfigure.html.twig');
+        
     }
     
     public function inscriptionAction()

@@ -18,22 +18,22 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1>Blog Post Title</h1>
+                <h1>{{figure.figureName}}</h1>
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">Start Bootstrap</a>
+                    by <a href="#">Auteur</a>
                 </p>
 
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span> {{figure.figureCreateDate|date('d-M-Y')}}</p>
 
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="../imagesacueill/{{figure.pictureacceuil}}" alt="{{figure.figureName}}">
 
                 <hr>
                 
@@ -57,10 +57,10 @@
                         <a> Auteur: Djal</a>
                     </div>
                     <div class="col-md-4">
-                        <a> catégorie: Snow</a>
+                        <a> </a>
                     </div>
                     <div class="col-md-4">
-                        <a> mise à jour: 20 mars 2018</a>
+                        <a> </a>
                     </div>
 
                 
