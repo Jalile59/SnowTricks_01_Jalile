@@ -25,9 +25,9 @@ class DefaultController extends Controller
         ));
     }
     
-    public function detailfigureAction()
+    public function detailfigureAction($id)
     {   
-        $id= 87;
+//        $id= 87;
         $em = $this->getDoctrine()->getManager();
         $figure = $em->find('DJviewBundle:Figures', $id);
         dump($figure);

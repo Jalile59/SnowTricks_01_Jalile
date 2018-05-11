@@ -52,7 +52,7 @@
                         <h3>{{figure.figureName}}</h3>
                         <p>{{figure.figureDescription|truncate(50, false, '...')}}</p>
                         <p>
-                             <a href="#" class="btn btn-default">Voir plus...</a>
+                             <a href="{{path('d_jview_detailfigure', {'id': figure.id})}}" class="btn btn-default">Voir plus...</a>
                         </p>
                     </div>
                         <div>
