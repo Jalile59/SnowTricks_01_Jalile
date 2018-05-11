@@ -12,14 +12,24 @@
 
 
     <title>Freelancer</title>
-
+    <!-- asset('bundles/ocplatform/css/main.css')  -->
     <!-- Bootstrap Core CSS -->
-    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    {% stylesheets output="app/djview/public/css/main.css" filter = 'cssrewrite'
+    
+    'public/css/bootstrap.min.css'
+    'public/css/bootstrap.css.map'
+    'public/css/freelancer.min.css'
+    'public/css//freelancerPerso.css'
+    'public/css/wbbtheme.css'
 
-    <!-- Theme CSS -->
+    %}
+    
+    <link href="{{asset_url}}" rel="stylesheet">
+    {% endstylesheets %}
+    <!-- Theme CSS 
     <link href="../public/css/freelancer.min.css" rel="stylesheet">
     <link href="../public/css/wbbtheme.css" rel="stylesheet">
-    <link href="../public/css/freelancerPerso.css" rel="stylesheet">
+    <link href="../public/css/freelancerPerso.css" rel="stylesheet"> 
 
     <!-- Custom Fonts -->
     <link href="../public/css/font-awesome.min.css" rel="stylesheet" type="text/css">
