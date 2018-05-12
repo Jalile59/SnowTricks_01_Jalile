@@ -14,7 +14,7 @@ class FigureController extends Controller {
         
         $figure = $em->find('DJviewBundle:Figures', $id);
         
-        
+       die;        
         if ($figure){
                                 
             $em->remove($figure);
