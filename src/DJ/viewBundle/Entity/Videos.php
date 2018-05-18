@@ -63,10 +63,9 @@ class Videos
      */
     public function setVideolink($videolink)
     {   
-        $long = strlen($videolink);
-        $video = substr($videolink, 30, $long);
-                
-        $this->videolink = $video;
+//        $long = strlen($videolink);
+//        $video = substr($videolink, 30, $long);
+        $this->videolink = $videolink;
         
         return $this;
     }

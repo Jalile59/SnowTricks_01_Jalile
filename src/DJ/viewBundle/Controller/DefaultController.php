@@ -17,7 +17,7 @@ class DefaultController extends Controller
         
         
    
-        dump($figure);
+//        dump($figure);
 
         
         return $this->render('DJviewBundle:Advert:index.html.twig', array(
@@ -65,7 +65,7 @@ class DefaultController extends Controller
             
             $file=$figure->getPicture();
             
-            dump($file);
+//            dump($file);
             
             $figure->setFigureCreatedate(new \DateTime());
             
@@ -77,6 +77,8 @@ class DefaultController extends Controller
             $em->persist($figure);
 //            die(var_dump($file));
             $em->flush();
+            
+             return $this->redirectToRoute('d_jview_homepage');
         }
         
         

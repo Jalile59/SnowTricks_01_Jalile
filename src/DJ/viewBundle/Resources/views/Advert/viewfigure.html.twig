@@ -13,7 +13,7 @@
         <div class="row">
 
             <!-- Blog Post Content Column -->
-            <div class="col-lg-10 col-lg-offset-1">
+            <div id="principale" class="col-lg-10 col-lg-offset-1">
 
                 <!-- Blog Post -->
 
@@ -22,10 +22,8 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">Auteur</a>
+                    by <a id="auteur" href="#">Auteur</a>
                 </p>
-
-                <hr>
 
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> {{figure.figureCreateDate|date('d-M-Y')}}</p>
@@ -33,19 +31,21 @@
                 <hr>
 
                 <!-- Preview Image -->
-                
-                <img id="imagePincipale" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('imagesacueill/')}}{{figure.pictureacceuil}}" alt="{{figure.figureName}}">
-                
+                <div id="imagePincipale" class="screen">
+                <img id="videos" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('imagesacueill/')}}{{figure.pictureacceuil}}" alt="{{figure.figureName}}">
+                </div>
+                <div id="videoprincipale" onclick="tes(this)" >
+                </div>
                 <hr>
                 <div class="row" >
                     {% for figure in figure.picture %}
                     <div class="col-md-2" style="margin-top: 5px" >
-                        <a href="#" ><img id="image{{figure.id}}" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{figure.pictureLink}}" alt="" onclick="imageview(this)"></a>                        
+                        <a href="#" ><img id="image{{figure.id}}" class="img-responsive displayed img" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{figure.pictureLink}}" alt="" onclick="tes(this)"></a>                        
                     </div>
                     {% endfor %}
                     {% for figure in figure.videofigure %}
-                    <div class="col-md-2"style="margin-top: 5px">
-                        {{figure.videolink|raw}}
+                    <div id="videolive" class="col-md-2"style="margin-top: 5px">
+                        <a id="video{{figure.id}}" class="video" href="#" >{{figure.videolink|raw}}</a>
                     </div>
                     {% endfor %}
                 </div>
@@ -153,5 +153,6 @@
     <!-- /.container -->
 
 <script src="{{asset('public/jsp/imageprincipale.js')}}"></script>
+<script src="{{asset('public/jsp/jalileJS.js')}}"></script>
 
 {% endblock %}
