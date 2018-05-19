@@ -3,6 +3,8 @@
 namespace DJ\viewBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 
 class DefaultController extends Controller
@@ -14,10 +16,10 @@ class DefaultController extends Controller
         
 //        $test = $figure->getPicture();
         
+        //$user = $this->getUser();
+        //$test=  $user->getid();
         
-        
-   
-//        dump($figure);
+//        dump($test);
 
         
         return $this->render('DJviewBundle:Advert:index.html.twig', array(
@@ -30,7 +32,7 @@ class DefaultController extends Controller
 //        $id= 87;
         $em = $this->getDoctrine()->getManager();
         $figure = $em->find('DJviewBundle:Figures', $id);
-        dump($figure);
+        //dump($figure);
         if($figure){
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array('figure'=>$figure));
@@ -42,16 +44,41 @@ class DefaultController extends Controller
         
     }
     
-    public function inscriptionAction()
+    public function inscriptionAction(Request $request)
     {
+        $users = new \DJ\usersecurityBundle\Entity\User();
         
-        return $this->render('DJviewBundle:Advert:inscription.html.twig');
+        $form = $this->createForm(\DJ\usersecurityBundle\Form\UserType::class,$users);
+        
+               
+        if ($request->isMethod('POST')){
+            
+            $form->handleRequest($request);
+            $em = $this->getDoctrine()->getManager();
+            dump(gettype($users));
+
+            $em->persist($users);
+            $em->flush();
+            
+            return $this->redirectToRoute('d_jview_homepage');
+
+        }
+        
+        
+        return $this->render('DJviewBundle:Advert:inscription.html.twig', array('form'=> $form->createView()));
     }
     
     public function connectionAction(){
         
         return $this->render('DJviewBundle:Advert:connection.html.twig');
     }
+    
+ /**
+  * 
+  * @param Request $request
+  * @return type
+  * @Security("has_role('ROLE_USER')")
+  */
     
     public function addfiguresAction(Request $request){
         
@@ -63,16 +90,12 @@ class DefaultController extends Controller
         
         if($request->isMethod('POST')){
             
-            $file=$figure->getPicture();
-            
-//            dump($file);
-            
+                                        
             $figure->setFigureCreatedate(new \DateTime());
             
             $form->handleRequest($request);
-            
-            $file = $figure->getPicture();
-            
+           
+           
             $em = $this->getDoctrine()->getManager();
             $em->persist($figure);
 //            die(var_dump($file));

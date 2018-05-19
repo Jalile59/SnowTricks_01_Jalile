@@ -12,10 +12,7 @@ d_jview_inscription:
     path:    /inscription
     defaults: {_controller: DJviewBundle:Default:inscription}
     
-    
-d_jview_connection:
-    path:    /connection
-    defaults: {_controller: DJviewBundle:Default:connection}
+   
     
     
 d_jview_addfigure:

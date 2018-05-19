@@ -5,3 +5,14 @@ d_jview:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+    
+login:
+    path: /login
+    defaults:
+        _controller: DJusersecurityBundle:Security:login
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
