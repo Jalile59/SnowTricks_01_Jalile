@@ -1,0 +1,196 @@
+<?php
+
+namespace DJ\viewBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Users
+ *
+ * @ORM\Table(name="users")
+ * @ORM\Entity(repositoryClass="DJ\viewBundle\Repository\UsersRepository")
+ */
+class Users
+{   
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usersName", type="string", length=255)
+     */
+    private $usersName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usersPseudo", type="string", length=255)
+     */
+    private $usersPseudo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usersCreateDate", type="string", length=255)
+     */
+    private $usersCreateDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usersMail", type="string", length=255, unique=true)
+     */
+    private $usersMail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usersPassword", type="string", length=255)
+     */
+    private $usersPassword;
+
+    
+    
+    public function __construct() {
+        $this->usersCreateDate= date('d-m-Y');
+    }
+    
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set usersName
+     *
+     * @param string $usersName
+     *
+     * @return Users
+     */
+    public function setUsersName($usersName)
+    {
+        $this->usersName = $usersName;
+
+        return $this;
+    }
+
+    /**
+     * Get usersName
+     *
+     * @return string
+     */
+    public function getUsersName()
+    {
+        return $this->usersName;
+    }
+
+    /**
+     * Set usersPseudo
+     *
+     * @param string $usersPseudo
+     *
+     * @return Users
+     */
+    public function setUsersPseudo($usersPseudo)
+    {
+        $this->usersPseudo = $usersPseudo;
+
+        return $this;
+    }
+
+    /**
+     * Get usersPseudo
+     *
+     * @return string
+     */
+    public function getUsersPseudo()
+    {
+        return $this->usersPseudo;
+    }
+
+    /**
+     * Set usersCreateDate
+     *
+     * @param string $usersCreateDate
+     *
+     * @return Users
+     */
+    public function setUsersCreateDate($usersCreateDate)
+    {
+        $this->usersCreateDate = $usersCreateDate;
+
+        return $this;
+    }
+
+    /**
+     * Get usersCreateDate
+     *
+     * @return string
+     */
+    public function getUsersCreateDate()
+    {
+        return $this->usersCreateDate;
+    }
+
+    /**
+     * Set usersMail
+     *
+     * @param string $usersMail
+     *
+     * @return Users
+     */
+    public function setUsersMail($usersMail)
+    {
+        $this->usersMail = $usersMail;
+
+        return $this;
+    }
+
+    /**
+     * Get usersMail
+     *
+     * @return string
+     */
+    public function getUsersMail()
+    {
+        return $this->usersMail;
+    }
+
+    /**
+     * Set usersPassword
+     *
+     * @param string $usersPassword
+     *
+     * @return Users
+     */
+    public function setUsersPassword($usersPassword)
+    {
+        $this->usersPassword = $usersPassword;
+
+        return $this;
+    }
+
+    /**
+     * Get usersPassword
+     *
+     * @return string
+     */
+    public function getUsersPassword()
+    {
+        return $this->usersPassword;
+    }
+}
+

@@ -4,36 +4,37 @@
     
     <div class="container" style="margin-top: 200px; margin-bottom: 250px;" >
         <div class="row centered-form">
-        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4" >
-        	<div class="panel panel-default">
-        		<div class="panel-heading"style="background-color: #2C3E50; color: white">
-			    		<h3 class="panel-title">Connection <small></small></h3>
-			 			</div>
-			 			<div class="panel-body" style="background-color: gainsboro">
-			    		<form role="form" method="POST" action="index.php?action=login" >
-
-			    			<div class="form-group">
-                                                    
-			    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Adresse Mail">
-                                                        <p style="color: red"> </p>
-			    			</div>
-
-			    			<div class="row">
-			    				<div class="col-xs-6 col-sm-6 col-md-6">
-			    					<div class="form-group">
-			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
-                                                                        <p style="color: red"></p>
-			    					</div>
-                                                        </div>
-
-			    			</div>
-			    			
-			    			<input type="submit" value="login" class="btn btn-info btn-block">
-			    		</form>
-			    	</div>
-	    		</div>
-    		</div>
-    	</div>
+            <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4" >
+                <div class="panel panel-default">
+                    <div class="panel-heading"style="background-color: #2C3E50; color: white">
+                        <h3 class="panel-title">Connection <small></small></h3>
+                    </div>
+                    <div class="panel-body" style="background-color: gainsboro">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.message }}</div>
+                        {% endif %}
+                        <form action="{{ path('login_check') }}" method="post">
+                            <div class=row>
+                                <div class="col-md-4" >
+                                    <label for="username">Login :</label>
+                                </div>
+                                <div class="col-md-8" >
+                                    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+                                </div>
+                                <div class="col-md-4" style="margin-top: 15px;">
+                                    <label for="password">Mot de passe :</label>
+                                </div>
+                                <div class="col-md-8" style="margin-top: 15px;">
+                                    <input type="password" id="password" name="_password" />
+                                </div>
+                                <br />
+                                <input type="submit" value="Connexion" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
