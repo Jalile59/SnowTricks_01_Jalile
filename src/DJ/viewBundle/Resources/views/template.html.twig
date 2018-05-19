@@ -81,7 +81,8 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="{{path('d_jview_homepage')}}">Bienvenue sur SnowTricks</a>
+                <a class="navbar-brand" href="{{path('d_jview_homepage')}}">Bienvenue sur SnowTricks {% if app.user %}  {{app.user.username}} {% endif %}</a><br>
+                
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -110,17 +111,19 @@
                             <li><a href="index.php?action=ViewAddarticle">New Article</a></li>
                         </div>
                     </li>-->
+                    {% if app.user %}
                     <li class="page-scroll">
                         <a href="{{path('logout')}}"><img src="{{asset('public/img/exit.png')}}"></a>
                     </li> 
-                    
+                    {% endif %}
+                     {% if app.user %}{% else %}
                     <li class="page-scroll">
                         <a href="{{ path('d_jview_inscription')}}">Inscription</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#">Connection</a>
+                    <a href="{{path('login')}}">Connection</a>
                     </li>
-                
+                    {% endif %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

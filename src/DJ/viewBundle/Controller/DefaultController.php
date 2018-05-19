@@ -77,7 +77,7 @@ class DefaultController extends Controller
   * 
   * @param Request $request
   * @return type
-  * @Security("has_role('ROLE_AUTEUR')")
+  * @Security("has_role('ROLE_USER')")
   */
     
     public function addfiguresAction(Request $request){

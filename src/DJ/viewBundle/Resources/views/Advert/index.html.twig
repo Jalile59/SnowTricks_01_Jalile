@@ -36,9 +36,7 @@
                             <a>Auteur:</a>
                         </div>
                         <div class="col-md-2 col-md-offset-2">
-                            {% if is_granted('ROLE_AUTEUR') %}
                            <a href="/SnowTricks_01/web/app_dev.php/supprimerFigure/{{figure.id}}"onclick="popdeleted(this)"><img src="../public/img/supprimer.png" alt=""></a>
-                            {% endif %}
                         </div>
                         <div class="col-md-2" style="align-content: center">
                            <a href="#"><img src="../public/img/bouton-modifier_318-77528.jpg" alt=""></a> 

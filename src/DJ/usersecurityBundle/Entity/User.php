@@ -67,7 +67,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
     public function __construct() {
 
         $this->userCreateDate = new \DateTime();
-        $this->roles [] = 'ROLE_USER';
+        $this->roles [] = 'ROLE_ADMIN';
         $this->salt= '';
     }
 
