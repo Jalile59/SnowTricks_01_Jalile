@@ -15,3 +15,12 @@ function popdeleted(element){
     
     
 }
+
+function affichefig(){
+    
+    var element = document.getElementById("figuredisplay");
+    
+    element.style.display ="block";
+    
+ $('html,body').animate({scrollTop: $("#figuredisplay").offset().top}, 'slow'      );
+}
