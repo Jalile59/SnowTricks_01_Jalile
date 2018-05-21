@@ -49,11 +49,17 @@ class DefaultController extends Controller
                 $em2 = $this->getDoctrine()->getManager();
                 $em2->persist($comment);
                 $em2->flush();
+                $em2->clear();
                 
             }
+            $em3 = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments');
+            $comments = $em3->findBy(array('figureId'=>$id));
+            
+            dump($comments);
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
                 'figure'=>$figure,
+                'comments'=>$comments,
                 'form'=>$form->createView()
                 ));
         }else{
