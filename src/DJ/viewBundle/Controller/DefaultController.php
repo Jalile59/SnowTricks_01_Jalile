@@ -19,7 +19,7 @@ class DefaultController extends Controller
         //$user = $this->getUser();
         //$test=  $user->getid();
         
-//        dump($test);
+        dump($figure);
 
         
         return $this->render('DJviewBundle:Advert:index.html.twig', array(
@@ -86,6 +86,7 @@ class DefaultController extends Controller
         $nimage = new \DJ\viewBundle\Entity\Pictures;
         
         $form = $this->createForm(\DJ\viewBundle\Form\FiguresType::class, $figure);
+        $users = $this->getUser();
         
         
         if($request->isMethod('POST')){
@@ -94,6 +95,7 @@ class DefaultController extends Controller
             $figure->setFigureCreatedate(new \DateTime());
             
             $form->handleRequest($request);
+            $figure->setUsers($users);
            
            
             $em = $this->getDoctrine()->getManager();

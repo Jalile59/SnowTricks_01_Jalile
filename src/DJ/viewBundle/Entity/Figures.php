@@ -15,6 +15,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Figures
 {   
     /**
+     *@ORM\ManyToOne(targetEntity="DJ\usersecurityBundle\Entity\User", cascade={"persist"})
+     * @var type 
+     */
+    
+    private $users;
+    
+    /**
      *@ORM\OneToMany(targetEntity=Videos::class, cascade={"persist", "remove"}, mappedBy="figurevideo")
      * 
      *
@@ -185,6 +192,7 @@ class Figures
     {
         $this->picture = new \Doctrine\Common\Collections\ArrayCollection();
         $this->videofigure = new \Doctrine\Common\Collections\ArrayCollection();
+        
     }
 
     /**
@@ -301,5 +309,29 @@ class Figures
     public function getVideofigure()
     {
         return $this->videofigure;
+    }
+
+    /**
+     * Set users
+     *
+     * @param \DJ\usersecurityBundle\Entity\User $users
+     *
+     * @return Figures
+     */
+    public function setUsers(\DJ\usersecurityBundle\Entity\User $users = null)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * Get users
+     *
+     * @return \DJ\usersecurityBundle\Entity\User
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

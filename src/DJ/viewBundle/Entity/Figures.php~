@@ -15,11 +15,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Figures
 {   
     /**
+     *@ORM\ManyToOne(targetEntity="DJ\usersecurityBundle\Entity\User", cascade={"persist"})
+     * @var type 
+     */
+    
+    private $users;
+    
+    /**
      *@ORM\OneToMany(targetEntity=Videos::class, cascade={"persist", "remove"}, mappedBy="figurevideo")
      * 
      *
      */
-    private $video;
+    private $videofigure;
     
     /**
      *@ORM\Column(name="pictureAcceuil", type="string", length=255)
@@ -184,7 +191,8 @@ class Figures
     public function __construct()
     {
         $this->picture = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->video = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->videofigure = new \Doctrine\Common\Collections\ArrayCollection();
+        
     }
 
     /**
@@ -273,9 +281,12 @@ class Figures
      *
      * @return Figures
      */
-    public function addVideo(\DJ\viewBundle\Entity\Videos $video)
+    public function addVideofigure(\DJ\viewBundle\Entity\Videos $video)
     {
-        $this->video[] = $video;
+        $this->videofigure[]= $video;
+        $video->setFigurevideo($this);
+
+        
 
         return $this;
     }
@@ -285,9 +296,9 @@ class Figures
      *
      * @param \DJ\viewBundle\Entity\Videos $video
      */
-    public function removeVideo(\DJ\viewBundle\Entity\Videos $video)
+    public function removeVideofigure(\DJ\viewBundle\Entity\Videos $video)
     {
-        $this->video->removeElement($video);
+        $this->videofigure->removeElement($video);
     }
 
     /**
@@ -295,8 +306,32 @@ class Figures
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getVideo()
+    public function getVideofigure()
     {
-        return $this->video;
+        return $this->videofigure;
+    }
+
+    /**
+     * Set users
+     *
+     * @param \DJ\usersecurityBundle\Entity\User $users
+     *
+     * @return Figures
+     */
+    public function setUsers(\DJ\usersecurityBundle\Entity\User $users = null)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * Get users
+     *
+     * @return \DJ\usersecurityBundle\Entity\User
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
