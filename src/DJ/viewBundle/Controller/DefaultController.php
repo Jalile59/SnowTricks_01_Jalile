@@ -27,15 +27,35 @@ class DefaultController extends Controller
         ));
     }
     
-    public function detailfigureAction($id)
+    public function detailfigureAction($id, Request $request)
     {   
 //        $id= 87;
         $em = $this->getDoctrine()->getManager();
         $figure = $em->find('DJviewBundle:Figures', $id);
-        //dump($figure);
+        
+        $comment = new \DJ\viewBundle\Entity\Comments();
+        $form = $this->createForm(\DJ\viewBundle\Form\CommentsType::class,$comment);
+        
+        
         if($figure){
             
-            return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array('figure'=>$figure));
+            if($request->isMethod('POST')){
+                $user = $this->getUser();
+                
+                $comment->setUserId($user);
+                $comment->setFigureId($figure);
+                
+                $form->handleRequest($request);
+                $em2 = $this->getDoctrine()->getManager();
+                $em2->persist($comment);
+                $em2->flush();
+                
+            }
+            
+            return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
+                'figure'=>$figure,
+                'form'=>$form->createView()
+                ));
         }else{
             
             throw $this->createNotFoundException('Cette figure n\'existe pas !');
@@ -55,7 +75,6 @@ class DefaultController extends Controller
             
             $form->handleRequest($request);
             $em = $this->getDoctrine()->getManager();
-            dump(gettype($users));
 
             $em->persist($users);
             $em->flush();
