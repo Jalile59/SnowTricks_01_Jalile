@@ -46,7 +46,7 @@
                         <div class="col-md-2" style="align-content: center">
                            
                             {% if app.user == figure.users or is_granted('ROLE_ADMIN') %}
-                           <a href="#"><img src="../public/img/bouton-modifier_318-77528.jpg" alt=""></a>
+                           <a href="{{path('d_jview_modification',{id: figure.id})}}"><img src="../public/img/bouton-modifier_318-77528.jpg" alt=""></a>
                             {% endif %}
                         </div>
 

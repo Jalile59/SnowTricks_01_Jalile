@@ -22,3 +22,11 @@ d_jview_addfigure:
 d_jview_delfigure:
     path:    /supprimerFigure/{id}
     defaults: {_controller: DJviewBundle:Figure:delfigure}
+    
+d_jview_modification:
+    path:    /modificationFigure/{id}
+    defaults: {_controller: DJviewBundle:Figure:modificationfigure}
+    
+d_jview_modification_test:
+    path:    /test/{id}
+    defaults: {_controller: DJviewBundle:Figure:test}

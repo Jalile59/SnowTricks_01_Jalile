@@ -143,20 +143,7 @@ console.log(video);
 
 //console.log($('#imagePincipale::nth-child(1)'))
 
-video.addEventListener("mouseenter", function(){
-    
-   t= this.id;
-    
-    id = '#' + this.id;
-    //id = '#auteur';
-    
-    
-    $(parentel).replaceWith($(id));
-    
 
-    console.log(id);
-    
-} );
     
 
 console.log('ici');
