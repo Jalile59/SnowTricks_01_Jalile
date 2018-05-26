@@ -50,13 +50,15 @@
                     <div class="col-md-2" style="margin-top: 5px" >
                         <div class="row" >
                             <div class="col-lg-3 col-lg-offset-2" >
-                                <div id="fileuploader" class="{{ loop.index }}"  onclick="mpicture(this)"> </div>
-                            </div>
-                            <div class="col-lg-3 col-lg-offset-1" >
                                 <a href="#"><img src="{{asset('public/img/supprimer.png')}}" alt=""></a>
                             </div>
+                            <div class="col-lg-3 col-lg-offset-1" >
+                                <div id="fileuploader" class="{{ loop.index }}" idphoto="{{figure.id}}"> </div>
+                            </div>                        
+                        </div> 
+                        <div>
+                         <a href="#"id='image{{loop.index}}' ><img id="{{figure.id}}" class="img-responsive displayed img" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{figure.pictureLink}}" alt="" onclick="tes(this)"></a>                        
                         </div>
-                        <a href="#"id='image{{loop.index}}' ><img id="{{figure.id}}" class="img-responsive displayed img" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{figure.pictureLink}}" alt="" onclick="tes(this)"></a>                        
                     </div>
                     {% endfor %}
                     {% for figure in figure.videofigure %}
@@ -125,35 +127,22 @@
 <script>
    
     elements = document.querySelectorAll("#fileuploader");
-    idpicture= 'null';
-    
-    function mpicture(element)
-    {
-       
-        id = '#image'+element.getAttribute('class');
-        console.log(element.getAttribute('class'));
-        picture = document.querySelector(id);
-        idpicture = picture.childNodes[0].id;
-        
-        console.log(picture.childNodes[0].id);
-        
-        
-        
-                    
-              return idpicture;
-    }
-    
-    
+
+
 $(document).ready(function()
 {       
    
     for (i=0; i<elements.length; i++){ 
-
+        
+     var id= elements[i].getAttribute('idphoto');
     $(elements[i]).uploadFile({
     
-    url:"../test/"+idpicture,
+    
+    url:"../test/"+id, // ma varible dans l'url vaut null.
     fileName:"myfile",
     dragDrop:false,
+    showDone:false,
+    showPreview:false,
     showFileSize:false,
     showFileCounter:false,
     allowedTypes: 'jpg,png' ,
@@ -162,18 +151,32 @@ $(document).ready(function()
             //files: list of files
             //data: response from server
             //xhr : jquer xhr object
-            alert('ok');
             console.log(files);
             console.log(data);
+           console.log('ici'+id);
+           newsrc(data['image'],data['id']);
             
-
         }
 
     })
       }
+      
+      
         
- console.log(idpicture);
 });
+
+    function newsrc(src,id){
+        
+
+        element = document.getElementById(id);
+        url = '/SnowTricks_01/web/images/'+src
+        element.setAttribute('src', url);
+        sansup = element.getAttribute('src');
+        console.log(id);
+        console.log(url);
+        console.log('Veridi apres modif = '+sansup);
+        
+    }
 </script>
 
     

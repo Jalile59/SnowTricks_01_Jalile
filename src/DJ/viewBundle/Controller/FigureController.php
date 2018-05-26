@@ -72,8 +72,11 @@ class FigureController extends Controller {
         
         $picture->setPictureLink($npicture);
         
+        $em->flush();
+        
         $result['sucess']=0;
         $result['image']= '';
+        $result['id']='';
         
         
         
@@ -83,6 +86,7 @@ class FigureController extends Controller {
             
         $result['sucess']=1;
         $result['image']= $namepicture;
+        $result['id']=$id;
         
         
             
