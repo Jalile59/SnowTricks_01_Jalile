@@ -65,13 +65,20 @@
                     <div id="videolive" class="col-md-2"style="margin-top: 5px">
                         <div class="row" >
                             <div class="col-lg-3 col-lg-offset-3" >
-                                <a href="#"><img src="{{asset('public/img/bouton-modifier_318-77528.png')}}" alt=""></a>
+                                <a href="javascript:void(0);" ><img idvideo="{{figure.id}}" id="mvideo" src="{{asset('public/img/bouton-modifier_318-77528.png')}}" alt="" onclick="modifvideo(this)"></a>
                             </div>
                             <div class="col-lg-3" >
                                 <a href="#"><img src="{{asset('public/img/supprimer.png')}}" alt=""></a>
                             </div>
                         </div>
-                        <a id="video{{figure.id}}" class="video" href="#" >{{figure.videolink|raw}}</a>
+                        
+                        <div class="row" >
+                            <div class="col-lg-12" >
+                            <a id="video{{figure.id}}" class="video" href="#" >{{figure.videolink|raw}}</a>
+                            </div>
+                            <div class="col-lg-2 subm" id="subm{{figure.id}}">
+                            </div>
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
@@ -124,60 +131,10 @@
 <script src="{{asset('public/jsp/imageprincipale.js')}}"></script>
 
 <script src="{{asset('public/jsp/jquery.uploadfile.min.js')}}"></script>
-<script>
-   
-    elements = document.querySelectorAll("#fileuploader");
 
+<script src="{{asset('public/jsp/image_modif_upload_ajax.js')}}"></script>
 
-$(document).ready(function()
-{       
-   
-    for (i=0; i<elements.length; i++){ 
-        
-     var id= elements[i].getAttribute('idphoto');
-    $(elements[i]).uploadFile({
-    
-    
-    url:"../test/"+id, // ma varible dans l'url vaut null.
-    fileName:"myfile",
-    dragDrop:false,
-    showDone:false,
-    showPreview:false,
-    showFileSize:false,
-    showFileCounter:false,
-    allowedTypes: 'jpg,png' ,
-    onSuccess:function(files,data,xhr,pd)
-        {
-            //files: list of files
-            //data: response from server
-            //xhr : jquer xhr object
-            console.log(files);
-            console.log(data);
-           console.log('ici'+id);
-           newsrc(data['image'],data['id']);
-            
-        }
-
-    })
-      }
-      
-      
-        
-});
-
-    function newsrc(src,id){
-        
-
-        element = document.getElementById(id);
-        url = '/SnowTricks_01/web/images/'+src
-        element.setAttribute('src', url);
-        sansup = element.getAttribute('src');
-        console.log(id);
-        console.log(url);
-        console.log('Veridi apres modif = '+sansup);
-        
-    }
-</script>
+<script src="{{asset('public/jsp/video_modifi_input_ajax.js')}}"></script>
 
     
                

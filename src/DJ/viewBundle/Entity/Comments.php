@@ -13,12 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Comments
 {
     /**
-     *@ORM\ManyToOne(targetEntity="DJ\usersecurityBundle\Entity\User", cascade={"persist"})
+     *@ORM\ManyToOne(targetEntity="DJ\usersecurityBundle\Entity\User", cascade={"persist", "remove"})
      * @var type 
      */
     private $userId;
     /**
-     *@ORM\ManyToOne(targetEntity="DJ\viewBundle\Entity\Figures", cascade={"persist", "remove"})
+     *@ORM\ManyToOne(targetEntity="DJ\viewBundle\Entity\Figures", cascade={"all"})
+     * 
      * @var type 
      */
     private $figureId;

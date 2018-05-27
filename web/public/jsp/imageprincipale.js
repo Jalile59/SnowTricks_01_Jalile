@@ -5,15 +5,13 @@ function tes(test){
     var imgpricipale = document.getElementById("imagePincipale");
     parentel = imgpricipale.childNodes[1];
     parentel2 = imgpricipale.childNodes[2];
-    console.log(parentel);
-    console.log(parentel2);
-    console.log(parentel2.id)
+
     id = '#' + test.id;
     
     if (parentel2.id){
         
        supp= imgpricipale.removeChild(parentel2);
- 
+
     }
     
     classe = test.getAttribute('class');
@@ -21,12 +19,12 @@ function tes(test){
     if(classe != 'video'){
         
         console.log("c'est une image");
-        console.log(classe);
+        
         
         createelementIMG(test)
     }else{
         console.log("c'est une video");
-        console.log(classe);
+        
         
         createelementvideo(test);
     }
@@ -51,7 +49,7 @@ function createelementIMG(test){
     newelement.setAttribute("class", "img-responsive displayed");
     
     supp= imgpricipale.removeChild(parentel);
-    console.log(supp);
+    
     imgpricipale.appendChild(newelement);
     
     //(parentel).replaceWith($(newelement));
@@ -146,5 +144,5 @@ console.log(video);
 
     
 
-console.log('ici');
+
 

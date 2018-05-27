@@ -27,6 +27,10 @@ d_jview_modification:
     path:    /modificationFigure/{id}
     defaults: {_controller: DJviewBundle:Figure:modificationfigure}
     
-d_jview_modification_test:
+d_jview_modification_ajaxupload:
+    path:    /ajaxpicture/{id}
+    defaults: {_controller: DJviewBundle:Figure:ajaxupload}
+    
+d_jview_modification_ajaxvideo:
     path:    /test/{id}
-    defaults: {_controller: DJviewBundle:Figure:test}
+    defaults: {_controller: DJviewBundle:Figure:ajaxvideo}

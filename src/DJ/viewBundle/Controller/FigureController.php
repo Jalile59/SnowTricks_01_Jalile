@@ -54,7 +54,7 @@ class FigureController extends Controller {
 
     }
     
-    public function testAction($id){
+    public function ajaxuploadAction($id){
       
 //        var_dump($_FILES);
 //        die;
@@ -87,19 +87,34 @@ class FigureController extends Controller {
         $result['sucess']=1;
         $result['image']= $namepicture;
         $result['id']=$id;
-        
-        
-            
-        
-        
-       
-        
-        
-        
-        
+
         return new JsonResponse($result);
 
     
-}
+    }
 
+    function ajaxvideoAction($id){
+        
+        $link = $_POST['link'];
+        
+//        var_dump($link);
+        $em = $this->getDoctrine()->getManager();
+        $videodata = $em->getRepository('DJviewBundle:Videos');
+        $video = $videodata->find($id);
+        
+        $video->setVideolink($link);
+        
+        $em->flush();
+        
+        $result [] ='';
+        $result ['sucess']= 1;
+        $result ['link'] = $link;
+        
+        $retourjson = new JsonResponse($result);
+        
+//        var_dump($retourjson);
+        
+        
+        return $retourjson;
+    }
 }
