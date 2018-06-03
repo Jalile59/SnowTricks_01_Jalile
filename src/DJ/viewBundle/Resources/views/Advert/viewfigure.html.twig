@@ -32,7 +32,12 @@
 
                 <!-- Preview Image -->
                 <div id="imagePincipale" class="screen">
-                <img id="videos" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('imagesacueill/')}}{{figure.pictureacceuil}}" alt="{{figure.figureName}}">
+                {% for figure in figure.picture %}
+                
+                {% if loop.index == 1 %}
+                <img id="videos" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{figure.pictureLink}}" alt="">
+                {% endif %}
+                {% endfor %}
                 </div>
                 <div id="videoprincipale" onclick="tes(this)" >
                 </div>

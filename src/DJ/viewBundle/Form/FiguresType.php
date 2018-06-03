@@ -22,13 +22,13 @@ class FiguresType extends AbstractType
                         'allow_add'    => true,    
                         'label'=>'Video:',
                         'allow_delete' => true
-                      ))                ->add('pictureAcceuil', \Symfony\Component\Form\Extension\Core\Type\FileType::class, array('label'=> 'Image acceuil'))
+                      ))                
                 ->add('picture', \Symfony\Component\Form\Extension\Core\Type\CollectionType::class, array(
                         'entry_type'   => PicturesType::class,
                         'prototype' => true,
                         'by_reference'=> false,
                         'allow_add'    => true,    
-                        'label'=>'Image:',
+                        'label'=>'Image acceuil:',
                         'allow_delete' => true
                       ))
                 ->add('save', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class)

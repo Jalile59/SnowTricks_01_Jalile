@@ -33,13 +33,7 @@ class Figures
      */
     private $videofigure;
     
-    /**
-     *@ORM\Column(name="pictureAcceuil", type="string", length=255)
-     * @var string 
-     */
-    
-    private $pictureAcceuil;
-    
+   
     /**
      *@ORM\OneToMany(targetEntity=Pictures::class, cascade={"persist", "remove"}, mappedBy="figure")
      * 
