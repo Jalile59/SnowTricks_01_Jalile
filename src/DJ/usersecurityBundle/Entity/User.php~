@@ -21,6 +21,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    /**
+     *@ORM\OneToMany(targetEntity="DJ\viewBundle\Entity\Comments",  cascade={"persist", "remove"}, mappedBy="userId")
+     * @var type 
+     */
+    private $comments;
 
     /**
      * @var string
@@ -63,7 +68,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
      * @ORM\Column(name="roles", type="array")
      */
     private $roles=array();
+    
+    public function __construct() {
 
+        $this->userCreateDate = new \DateTime();
+        $this->roles [] = 'ROLE_ADMIN';
+        $this->salt= '';
+    }
 
     /**
      * Get id
@@ -175,5 +186,52 @@ use Symfony\Component\Security\Core\User\UserInterface;
         
     }
 
-}
 
+    /**
+     * Set userCreateDate
+     *
+     * @param \DateTime $userCreateDate
+     *
+     * @return User
+     */
+    public function setUserCreateDate($userCreateDate)
+    {
+        $this->userCreateDate = $userCreateDate;
+
+        return $this;
+    }
+
+    /**
+     * Get userCreateDate
+     *
+     * @return \DateTime
+     */
+    public function getUserCreateDate()
+    {
+        return $this->userCreateDate;
+    }
+
+    /**
+     * Set mail
+     *
+     * @param string $mail
+     *
+     * @return User
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * Get mail
+     *
+     * @return string
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+}

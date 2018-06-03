@@ -60,13 +60,15 @@ class Pictures
     /**
      * Set pictureLink
      *
-     * @param string $pictureLink
+     * @param Symfony\Component\HttpFoundation\File\UploadedFile $pictureLink
      *
      * @return Pictures
      */
     public function setPictureLink( $pictureLink)
     {
+//        var_dump($pictureLink, $_FILES);
         
+      
         $nname = $this->newname($pictureLink);
         
         $test = $pictureLink->getClientOriginalExtension();

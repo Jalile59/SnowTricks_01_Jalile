@@ -20,6 +20,11 @@ class Figures
      */
     
     private $users;
+    /**
+     *@ORM\OneToMany(targetEntity=Comments::class, cascade={"persist", "remove"}, mappedBy="figureId")
+     * @var type 
+     */
+    private $comments;
     
     /**
      *@ORM\OneToMany(targetEntity=Videos::class, cascade={"persist", "remove"}, mappedBy="figurevideo")
@@ -333,5 +338,39 @@ class Figures
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \DJ\viewBundle\Entity\Comments $comment
+     *
+     * @return Figures
+     */
+    public function addComment(\DJ\viewBundle\Entity\Comments $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \DJ\viewBundle\Entity\Comments $comment
+     */
+    public function removeComment(\DJ\viewBundle\Entity\Comments $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

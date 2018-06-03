@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Videos
 {
     /**
-     * @ORM\ManyToOne(targetEntity=Figures::class, inversedBy="video")
+     * @ORM\ManyToOne(targetEntity=Figures::class, inversedBy="videofigure")
      * 
      */
     private $figurevideo;
@@ -62,9 +62,11 @@ class Videos
      * @return Videos
      */
     public function setVideolink($videolink)
-    {
+    {   
+//        $long = strlen($videolink);
+//        $video = substr($videolink, 30, $long);
         $this->videolink = $videolink;
-
+        
         return $this;
     }
 
@@ -127,4 +129,28 @@ class Videos
     }
     
     
+
+    /**
+     * Set figurevideo
+     *
+     * @param \DJ\viewBundle\Entity\Figures $figurevideo
+     *
+     * @return Videos
+     */
+    public function setFigurevideo(\DJ\viewBundle\Entity\Figures $figurevideo = null)
+    {
+        $this->figurevideo = $figurevideo;
+
+        return $this;
+    }
+
+    /**
+     * Get figurevideo
+     *
+     * @return \DJ\viewBundle\Entity\Figures
+     */
+    public function getFigurevideo()
+    {
+        return $this->figurevideo;
+    }
 }

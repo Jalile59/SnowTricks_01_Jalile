@@ -21,6 +21,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    /**
+     *@ORM\OneToMany(targetEntity="DJ\viewBundle\Entity\Comments",  cascade={"persist", "remove"}, mappedBy="userId")
+     * @var type 
+     */
+    private $comments;
 
     /**
      * @var string
@@ -228,5 +233,39 @@ use Symfony\Component\Security\Core\User\UserInterface;
     public function getMail()
     {
         return $this->mail;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \DJ\viewBundle\Entity\Comments $comment
+     *
+     * @return User
+     */
+    public function addComment(\DJ\viewBundle\Entity\Comments $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \DJ\viewBundle\Entity\Comments $comment
+     */
+    public function removeComment(\DJ\viewBundle\Entity\Comments $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
