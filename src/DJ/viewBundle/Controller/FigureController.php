@@ -45,7 +45,7 @@ class FigureController extends Controller {
         $em2 = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Pictures');
         $mpicture = $em2->find($id);
         
-        
+        dump($figure);
         
         
         
@@ -116,5 +116,31 @@ class FigureController extends Controller {
         
         
         return $retourjson;
+    }
+    
+    
+    function ajaxupdatedescriptionAction($id){
+        
+        $description = $_POST['description'];
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $figuredata = $em->getRepository('DJviewBundle:Figures');
+        
+        $figure = $figuredata->find($id);
+        
+        
+        $figure->setFigureDescription($description);
+        
+        $em->flush();
+        
+        $result [] ='';
+        $result ['sucess']= 1;
+        $result ['id']= $id;
+        $result ['description'] = $description;
+        
+        return new JsonResponse($result);
+        
+        
     }
 }

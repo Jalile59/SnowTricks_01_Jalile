@@ -22,7 +22,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a id="auteur" href="#">Auteur</a>
+                    by <a id="auteur" idarticle="{{ figure.id }}" href="#">Auteur</a>
                 </p>
 
                 <!-- Date/Time -->
@@ -94,7 +94,7 @@
                 <!-- Post Content -->
                
                 <div>
-                    <form id=form method="post">
+                    <form id=formdescription method="post">
                         <textarea id="desciption" rows="15" cols="120" type="text" name="description"/> {{figure.figureDescription}}</textarea><input type="submit"/>
                     </form> 
                 </div>
@@ -139,6 +139,8 @@
 
     </div>
     <!-- /.container -->
+    
+<script src="{{asset('public/jsp/ajax_description_update.js')}}"></script>
 <script src="{{asset('public/jsp/imageprincipale.js')}}"></script>
 
 <script src="{{asset('public/jsp/jquery.uploadfile.min.js')}}"></script>
