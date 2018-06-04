@@ -16,7 +16,7 @@ idlink = element.getAttribute("idvideo");
 
 
 
-$('<div id=inputsub><form id=form method="post"  ><textarea id="ninput" type="text" name="link" value="" placeholder="coller nouvelle balise"/> <input type="submit"   /></form></div>').appendTo(id);
+$('<div id=inputsub><form id=form method="post"  ><textarea id="ninput" type="text" name="link" placeholder="coller nouvelle balise"></textarea> <input type="submit"   /></form></div>').appendTo(id);
     
 $('#form').submit(function(event){
     event.preventDefault();
@@ -27,18 +27,26 @@ $('#form').submit(function(event){
                   dataType: 'json',
                   data: $(this).serialize(),
                   success: function (data){
-                      console.log(data);
-                      sucessjava(id,formdata);
+                      console.log(data['link']);
+                      sucessjava(idlink,formdata,data['link']);
                       
                   }
                   });
                   });
     
-    function sucessjava(id,formdata){
+    function sucessjava(id,formdata, link){
     
+    videoelement = "video"+id;    
+        
     element = document.getElementById('inputsub');
     element.style.display ="none";
-    console.log('dans la fucntion');
+    
+    video = document.getElementById(videoelement);    
+    //video.setAttribute("src", link);
+        $('#video'+idlink).html(link);
+        videosize();
+    
+    console.log(video);
     
     
 }}
