@@ -123,7 +123,7 @@ class Figures
     public function setFigureDescription($figureDescription)
     {
         $this->figureDescription = $figureDescription;
-
+        
         return $this;
     }
 

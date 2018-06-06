@@ -34,3 +34,7 @@ d_jview_modification_ajaxupload:
 d_jview_modification_ajaxvideo:
     path:    /test/{id}
     defaults: {_controller: DJviewBundle:Figure:ajaxvideo}
+    
+d_jview_modification_ajaxdesciption:
+    path:    /updatedescription/{id}
+    defaults: {_controller: DJviewBundle:Figure:ajaxupdatedescription}
