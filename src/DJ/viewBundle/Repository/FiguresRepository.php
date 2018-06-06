@@ -14,11 +14,19 @@ class FiguresRepository extends \Doctrine\ORM\EntityRepository
     public function myfindall()
     {
         $requry = $this->_em->createQuery('SELECT f FROM DJviewBundle:Figures f JOIN f.picture');
-//        $query = $em->createQuery("SELECT u FROM User u JOIN u.address a WHERE a.city = 'Berlin'");
+
         
         $resultats = $requry->getResult();
         
         return $resultats;
+    }
+    
+    public function pagination($firstResult, $maxResults = 5){
+        $requry = $this->_em->createQuery('SELECT f FROM DJviewBundle:Figures f JOIN f.picture')->setFirstResult(($maxResults)*($firstResult-1))->setMaxResults($maxResults);
+        
+        $page = new \Doctrine\ORM\Tools\Pagination\Paginator($requry);
+        
+        return $page;
     }
     
     public function getAdvertWithApplications()

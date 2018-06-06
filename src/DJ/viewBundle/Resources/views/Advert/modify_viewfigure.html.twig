@@ -95,8 +95,12 @@
                
                 <div>
                     <form id=formdescription method="post">
-                        <textarea id="desciption" rows="15" cols="120" type="text" name="description"/> {{figure.figureDescription}}</textarea><input type="submit"/>
+                        <textarea id="desciption" rows="15" cols="120" type="text" name="description"/> {{figure.figureDescription}}</textarea>
+                    
+                    <a href="{{path('d_jview_delfigure',{id: figure.id})}}" ><button type="button" class="btn btn-danger">Supprimer</button></a>
+                    <input class="btn btn-primary" type="submit"/>
                     </form> 
+                    
                 </div>
 
            

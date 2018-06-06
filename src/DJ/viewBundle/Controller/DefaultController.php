@@ -11,17 +11,10 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {   
-        //test
-        $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->myfindall();
-        
-//        $test = $figure->getPicture();
-        
-        //$user = $this->getUser();
-        //$test=  $user->getid();
+        $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->pagination(1);
         
         dump($figure);
-
-        
+                
         return $this->render('DJviewBundle:Advert:index.html.twig', array(
             'figure'=>$figure
         ));
