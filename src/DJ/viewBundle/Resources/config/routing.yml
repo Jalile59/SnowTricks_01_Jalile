@@ -1,7 +1,7 @@
 d_jview_homepage:
-    path:     /
-    defaults: { _controller: DJviewBundle:Default:index }
-    
+    path:     /{max}
+    defaults: { _controller: DJviewBundle:Default:index, max: 5 }
+                             
     
 d_jview_detailfigure:
     path:    /figure/{id}
@@ -11,9 +11,7 @@ d_jview_detailfigure:
 d_jview_inscription:
     path:    /inscription
     defaults: {_controller: DJviewBundle:Default:inscription}
-    
-   
-    
+         
     
 d_jview_addfigure:
     path:    /ajoutFigure

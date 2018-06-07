@@ -21,7 +21,7 @@ class FiguresRepository extends \Doctrine\ORM\EntityRepository
         return $resultats;
     }
     
-    public function pagination($firstResult, $maxResults = 5){
+    public function pagination($firstResult, $maxResults){
         $requry = $this->_em->createQuery('SELECT f FROM DJviewBundle:Figures f JOIN f.picture')->setFirstResult(($maxResults)*($firstResult-1))->setMaxResults($maxResults);
         
         $page = new \Doctrine\ORM\Tools\Pagination\Paginator($requry);

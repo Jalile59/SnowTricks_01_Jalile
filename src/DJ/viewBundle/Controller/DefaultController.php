@@ -4,14 +4,19 @@ namespace DJ\viewBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 
 
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+
+    public function indexAction($max)
     {   
-        $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->pagination(1);
+
+        
+        $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->myfindall();
         
         dump($figure);
                 
@@ -131,6 +136,23 @@ class DefaultController extends Controller
     }
     
   
+    /**
+     * Matches /homes
+     * 
+     * @Route("/homes", name="home")
+     */
+    public function index2Action()
+    {   
+
+        
+        $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->pagination(1,5);
+        
+        dump($figure);
+                
+        return $this->render('DJviewBundle:Advert:index.html.twig', array(
+            'figure'=>$figure
+        ));
+    }
     
     
     
