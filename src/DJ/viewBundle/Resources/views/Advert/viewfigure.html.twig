@@ -101,7 +101,7 @@
                 {% for comments in comments %}
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="media-object" src="{{asset('public/img/avatar-icons-74259.png')}}" alt="">
+                        <img style="height: 64px" class="media-object" src="{{asset('photo_user/')}}{{ comments.userID.userphoto }}" alt="">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">{{ comments.userId.username}}

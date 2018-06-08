@@ -13,6 +13,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
  class User implements UserInterface
 {
+     /**
+      *@ORM\Column(name="userphoto", type="string", length=255)
+      * @var type 
+      */
+     private $userphoto;
     /**
      * @var int
      *
@@ -267,5 +272,36 @@ use Symfony\Component\Security\Core\User\UserInterface;
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set userphoto
+     *
+     * @param \string $userphoto
+     *
+     * @return User
+     */
+    public function setUserphoto($userphoto)
+    {
+        $this->userphoto = $userphoto;
+        $newnamefile =  md5(uniqid()).'.'.$userphoto->getClientOriginalExtension();
+        
+        $userphoto->move('../web/photo_user/', $newnamefile);
+        
+       
+        
+        $this->userphoto = $newnamefile;
+
+        return $this;
+    }
+
+    /**
+     * Get userphoto
+     *
+     * @return \String
+     */
+    public function getUserphoto()
+    {
+        return $this->userphoto;
     }
 }

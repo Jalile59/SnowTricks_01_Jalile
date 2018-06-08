@@ -53,7 +53,7 @@ class DefaultController extends Controller
             $em3 = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments');
             $comments = $em3->findBy(array('figureId'=>$id));
             
-            dump($figure);
+            dump($comments);
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
                 'figure'=>$figure,
