@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
 
-    public function indexAction($max)
+    public function indexAction()
     {   
 
         
@@ -53,7 +53,7 @@ class DefaultController extends Controller
             $em3 = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments');
             $comments = $em3->findBy(array('figureId'=>$id));
             
-            dump($comments);
+            dump($figure);
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
                 'figure'=>$figure,
@@ -136,11 +136,7 @@ class DefaultController extends Controller
     }
     
   
-    /**
-     * Matches /homes
-     * 
-     * @Route("/homes", name="home")
-     */
+
     public function index2Action()
     {   
 
