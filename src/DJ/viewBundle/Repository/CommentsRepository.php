@@ -10,4 +10,33 @@ namespace DJ\viewBundle\Repository;
  */
 class CommentsRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    
+        public function pagination($id, $firstResult){
+            
+           // $repository = $this->getDctrine()->getRepository(\DJ\viewBundle\Entity\Comments::class);
+            
+            $q = $this->createQueryBuilder('c')
+                    
+                    ->where('c.figureId = :id')
+                    ->orderBy('c.commentCreateDate', 'DESC')
+                    ->setFirstResult($firstResult*5)
+                    ->setMaxResults($maxResults = 5)
+                    ->setParameter('id', $id);
+
+                    
+           
+        //$requry = $this->_em->createQuery('SELECT f FROM DJviewBundle:Comments f JOIN f.userId WHERE')->setFirstResult(($maxResults)*($firstResult-1))->setMaxResults($maxResults);
+        
+        $page = new \Doctrine\ORM\Tools\Pagination\Paginator($q);
+        
+        $npage = count($page);
+        
+        dump($npage);
+        
+        
+        
+        return  $q->getQuery()->getResult();
+    }
+    
 }

@@ -8,7 +8,7 @@
 
         <!-- Jumbotron Header -->
         
-        <header class="jumbotron hero-spacer" style="background-image: url('../public/img/petit som avalanche.jpg');background-size: 100%; height: 900px; border-radius: 0px;  " >
+        <header class="jumbotron hero-spacer" style="background-image: url('../public/img/petit som avalanche.jpg');background-size: 100%; border-radius: 0px; background-repeat:no-repeat; height: 900px" >
             <h1>Bienvenue sur SnowTricks</h1>
             <p></p>
             <p><a href="#" class="btn btn-primary btn-large" onclick="affichefig(this)" >Voir les figures</a>
@@ -33,7 +33,7 @@
                 <div class="thumbnail">
                     <div class="row">
                         <div class="col-md-6">
-                            <a>Auteur:</a>
+                            <a>Auteur: {{figure.users.username}}</a>
                         </div>
                         
                         <div class="col-md-2 col-md-offset-2">
@@ -82,7 +82,6 @@
         <hr>
 
 <script src="{{asset('public/jsp/messagedelelted.js')}}"></script>
-<script src="{{asset('public/jsp/paginator.js')}}"></script>
 
     
     

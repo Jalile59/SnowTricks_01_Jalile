@@ -1,3 +1,11 @@
+
+@media Screen and (max-width: 640px){
+	#footer{
+		display: none;
+	}
+}
+
+
 .table-bordered {
 border: 1px solid #dddddd;
 border-collapse: separate;

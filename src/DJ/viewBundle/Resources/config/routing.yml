@@ -4,8 +4,8 @@ d_jview_homepage:
                              
     
 d_jview_detailfigure:
-    path:    /figure/{id}
-    defaults: {_controller: DJviewBundle:Default:detailfigure}
+    path:    /figure/{id}/{page}
+    defaults: {_controller: DJviewBundle:Default:detailfigure, page: 1}
     
 
 d_jview_inscription:

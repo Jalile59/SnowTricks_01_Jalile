@@ -1,17 +1,22 @@
 page=0;
-document.getElementById("plus").addEventListener("click", increment);
+document.getElementById("next").addEventListener("click", increment());
 
 
 function increment(){
     
-     page+=5;
+    element = document.getElementById('next');
+    idarticle = element.getAttribute('idarticle');
+    
+    page++;
+   
+
     
     console.log(page);
     
 
     formdatas = $(this).serialize()
                   $.ajax({
-                  url: './'+page,
+                  url: './'+idarticle+'/'+page,
                   type: 'GET',
                   dataType: 'json',
                   data: $(this).serialize(),

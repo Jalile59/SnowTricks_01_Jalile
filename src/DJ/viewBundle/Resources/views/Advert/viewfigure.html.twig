@@ -105,13 +105,20 @@
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">{{ comments.userId.username}}
-                            <small>{{ comments.commentCreateDate|date('M-d-Y',  "Europe/Paris") }}</small>
+                            <small>{{ comments.commentCreateDate|date('M-d-Y H:i:s') }}</small>
                         </h4>
                         {{ comments.commentContent }}
                     </div>
                 </div>
                 <hr>
+
                 {% endfor %}
+                <nav aria-label="navigation">
+                <ul class="pager">
+                  <li><a id="before" href="#" title="Précédent">Précédent</a></li>
+                  <li><a id="next" idarticle="{{figure.id}}" href="#" title="Suivant">Suivant</a></li>
+                </ul>
+                </nav>
                 <!-- Comment -->
                
 
@@ -139,5 +146,7 @@
 
 <script src="{{asset('public/jsp/imageprincipale.js')}}"></script>
 <script src="{{asset('public/jsp/jalileJS.js')}}"></script>
+<script src="{{asset('public/jsp/paginator.js')}}"></script>
+
 
 {% endblock %}

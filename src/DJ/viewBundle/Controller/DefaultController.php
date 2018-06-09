@@ -25,8 +25,8 @@ class DefaultController extends Controller
         ));
     }
     
-    public function detailfigureAction($id, Request $request)
-    {   
+    public function detailfigureAction($id, Request $request, $page)
+    {       
 //        $id= 87;
         $em = $this->getDoctrine()->getManager();
         $figure = $em->find('DJviewBundle:Figures', $id);
@@ -50,10 +50,13 @@ class DefaultController extends Controller
                 $em2->clear();
                 
             }
-            $em3 = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments');
-            $comments = $em3->findBy(array('figureId'=>$id));
             
-            dump($comments);
+            $comments = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments')->pagination($id,$page);
+
+            //$comments = $em3->findBy(array('figureId'=>$id));
+            $npage = count($comments);
+            dump($npage);
+
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
                 'figure'=>$figure,
@@ -86,6 +89,8 @@ class DefaultController extends Controller
             return $this->redirectToRoute('d_jview_homepage');
 
         }
+        
+       
         
         
         return $this->render('DJviewBundle:Advert:inscription.html.twig', array('form'=> $form->createView()));
