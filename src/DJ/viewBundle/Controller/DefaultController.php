@@ -3,8 +3,6 @@
 namespace DJ\viewBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
 
@@ -52,15 +50,19 @@ class DefaultController extends Controller
             }
             
             $comments = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments')->pagination($id,$page);
-
-            //$comments = $em3->findBy(array('figureId'=>$id));
-            $npage = count($comments);
-            dump($npage);
+            
+            
+            $commentsNpage = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments')->findBy(array('figureId'=>$id));
+            //retourn le nombre de commentaire.
+            $totalcomments = count($commentsNpage);
+            $totalpage = intval($totalcomments/5);
+            dump(gettype($totalpage));
 
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
                 'figure'=>$figure,
                 'comments'=>$comments,
+                'totalpage'=>$totalpage,
                 'form'=>$form->createView()
                 ));
         }else{
