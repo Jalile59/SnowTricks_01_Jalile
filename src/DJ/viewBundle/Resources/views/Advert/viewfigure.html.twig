@@ -110,16 +110,21 @@
                         {{ comments.commentContent }}
                     </div>
                 </div>
+                
                 <hr>
 
                 {% endfor %}
                 <nav aria-label="navigation">
                 <ul class="pager">
-                  <li><a id="before" href="#" title="Précédent">Précédent</a></li>
+                  {% if page >= totalpage %}
+                <li><a id="next" idarticle="{{figure.id}}" href="{{path('d_jview_detailfigure',{'id':figure.id, 'page':pagebefore})}}" title="Suivant">Pécédent</a></li>
+                  {% endif  %}
                   {% for i in range(0, totalpage) %} 
                   <a href="{{path('d_jview_detailfigure',{'id':figure.id, 'page':i})}}">-{{loop.index}}-</a>
                   {% endfor %}
-                <li><a id="next" idarticle="{{figure.id}}" href="" title="Suivant">Suivant</a></li>
+                  {% if page <= totalpage %}
+                <li><a id="next" idarticle="{{figure.id}}" href="{{path('d_jview_detailfigure',{'id':figure.id, 'page':pagenext})}}" title="Suivant">Suivant</a></li>
+                  {% endif  %}
                 </ul>
                 </nav>
                 <!-- Comment -->

@@ -61,6 +61,9 @@ class DefaultController extends Controller
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
                 'figure'=>$figure,
+                'pagenext'=>$page+1,
+                'pagebefore'=>$page-1,
+                'page'=>$page,
                 'comments'=>$comments,
                 'totalpage'=>$totalpage,
                 'form'=>$form->createView()
