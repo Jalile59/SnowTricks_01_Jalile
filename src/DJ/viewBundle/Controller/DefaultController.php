@@ -3,6 +3,7 @@
 namespace DJ\viewBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 
 
@@ -10,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
 
-    public function indexAction()
+    public function indexAction($sucess)
     {   
 
         
@@ -19,7 +20,8 @@ class DefaultController extends Controller
         dump($figure);
                 
         return $this->render('DJviewBundle:Advert:index.html.twig', array(
-            'figure'=>$figure
+            'figure'=>$figure,
+            'sucess'=>$sucess
         ));
     }
     
@@ -136,7 +138,7 @@ class DefaultController extends Controller
 //            die(var_dump($file));
             $em->flush();
             
-             return $this->redirectToRoute('d_jview_homepage');
+             return $this->redirectToRoute('d_jview_homepage', array('sucess'=>1));
         }
         
         
