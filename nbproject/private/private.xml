@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/SnowTricks_01/src/DJ/viewBundle/Resources/views/Advert/addfigure.html.twig</file>
-            <file>file:/C:/wamp/www/SnowTricks_01/src/DJ/viewBundle/Resources/views/Advert/viewfigure.html.twig</file>
-            <file>file:/C:/wamp/www/SnowTricks_01/src/DJ/viewBundle/Resources/views/Advert/index.html.twig</file>
-            <file>file:/C:/wamp/www/SnowTricks_01/src/DJ/viewBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/wamp/www/SnowTricks_01/src/DJ/viewBundle/Controller/FigureController.php</file>
-            <file>file:/C:/wamp/www/SnowTricks_01/src/DJ/viewBundle/Resources/views/template.html.twig</file>
-            <file>file:/C:/wamp/www/SnowTricks_01/src/DJ/viewBundle/Entity/Figures.php</file>
+            <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/viewBundle/Resources/views/Advert/viewfigure.html.twig</file>
+            <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/viewBundle/Resources/views/Advert/connection.html.twig</file>
+            <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/viewBundle/Controller/DefaultController.php</file>
+            <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/viewBundle/Repository/FiguresRepository.php</file>
+            <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/viewBundle/Resources/views/Advert/modify_viewfigure.html.twig</file>
+            <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/viewBundle/Resources/config/routing.yml</file>
         </group>
     </open-files>
 </project-private>

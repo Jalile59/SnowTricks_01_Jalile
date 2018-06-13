@@ -3,32 +3,28 @@
 namespace DJ\viewBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 
 
 class DefaultController extends Controller
 {
+
     public function indexAction()
     {   
-        //test
-        $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->myfindall();
-        
-//        $test = $figure->getPicture();
-        
-        //$user = $this->getUser();
-        //$test=  $user->getid();
-        
-        dump($figure);
 
         
+        $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->myfindall();
+        
+        dump($figure);
+                
         return $this->render('DJviewBundle:Advert:index.html.twig', array(
             'figure'=>$figure
         ));
     }
     
-    public function detailfigureAction($id, Request $request)
-    {   
+    public function detailfigureAction($id, Request $request, $page)
+    {       
 //        $id= 87;
         $em = $this->getDoctrine()->getManager();
         $figure = $em->find('DJviewBundle:Figures', $id);
@@ -52,14 +48,24 @@ class DefaultController extends Controller
                 $em2->clear();
                 
             }
-            $em3 = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments');
-            $comments = $em3->findBy(array('figureId'=>$id));
             
-            dump($comments);
+            $comments = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments')->pagination($id,$page);
+            
+            
+            $commentsNpage = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments')->findBy(array('figureId'=>$id));
+            //retourn le nombre de commentaire.
+            $totalcomments = count($commentsNpage);
+            $totalpage = intval($totalcomments/5);
+            dump(gettype($totalpage));
+
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
                 'figure'=>$figure,
+                'pagenext'=>$page+1,
+                'pagebefore'=>$page-1,
+                'page'=>$page,
                 'comments'=>$comments,
+                'totalpage'=>$totalpage,
                 'form'=>$form->createView()
                 ));
         }else{
@@ -88,6 +94,8 @@ class DefaultController extends Controller
             return $this->redirectToRoute('d_jview_homepage');
 
         }
+        
+       
         
         
         return $this->render('DJviewBundle:Advert:inscription.html.twig', array('form'=> $form->createView()));
@@ -138,6 +146,19 @@ class DefaultController extends Controller
     }
     
   
+
+    public function index2Action()
+    {   
+
+        
+        $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->pagination(1,5);
+        
+        dump($figure);
+                
+        return $this->render('DJviewBundle:Advert:index.html.twig', array(
+            'figure'=>$figure
+        ));
+    }
     
     
     

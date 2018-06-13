@@ -15,6 +15,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Figures
 {   
     /**
+     * @ORM\Column(name="categorie", type="string", length=255)
+     * @var type string
+     */
+    private $categories;
+    
+    /**
      *@ORM\ManyToOne(targetEntity="DJ\usersecurityBundle\Entity\User", cascade={"persist"})
      * @var type 
      */
@@ -366,5 +372,29 @@ class Figures
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set categories
+     *
+     * @param string $categories
+     *
+     * @return Figures
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Get categories
+     *
+     * @return string
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

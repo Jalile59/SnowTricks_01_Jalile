@@ -15,6 +15,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Figures
 {   
     /**
+     * @ORM\Column(name="categorie", type="string", length=255)
+     * @var type string
+     */
+    private $categories;
+    
+    /**
      *@ORM\ManyToOne(targetEntity="DJ\usersecurityBundle\Entity\User", cascade={"persist"})
      * @var type 
      */
@@ -123,7 +129,7 @@ class Figures
     public function setFigureDescription($figureDescription)
     {
         $this->figureDescription = $figureDescription;
-
+        
         return $this;
     }
 

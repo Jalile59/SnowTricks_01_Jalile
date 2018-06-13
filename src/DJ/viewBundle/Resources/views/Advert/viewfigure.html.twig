@@ -22,7 +22,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a id="auteur" href="#">Auteur</a>
+                    by <a id="auteur" href="#">{{figure.users.username}}</a>
                 </p>
 
                 <!-- Date/Time -->
@@ -59,17 +59,17 @@
                 <hr>
 
                 <!-- Post Content -->
-                <p class="lead">{{figure.figureDescription}}</p>
+                <p class="lead">{{figure.figureDescription|raw}}</p>
 
                 <hr>
                 
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
-                        <a> Auteur: Djal</a>
+                        <a> Auteur: {{figure.users.username}}</a>
                     </div>
                     <div class="col-md-4">
-                        <a> </a>
+                        <a> Catégorie : {{figure.categories}}</a>
                     </div>
                     <div class="col-md-4">
                         <a> </a>
@@ -101,19 +101,33 @@
                 {% for comments in comments %}
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="media-object" src="{{asset('public/img/avatar-icons-74259.png')}}" alt="">
+                        <img style="height: 64px" class="media-object" src="{{asset('photo_user/')}}{{ comments.userID.userphoto }}" alt="">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">{{ comments.userId.username}}
-                            <small>{{ comments.commentCreateDate|date('M-d-Y',  "Europe/Paris") }}</small>
+                            <small>{{ comments.commentCreateDate|date('M-d-Y H:i:s') }}</small>
                         </h4>
                         {{ comments.commentContent }}
                     </div>
                 </div>
+                
                 <hr>
+
                 {% endfor %}
+                <nav aria-label="navigation">
+                <ul class="pager">
+                  {% if page >= totalpage %}
+                <li><a id="next" idarticle="{{figure.id}}" href="{{path('d_jview_detailfigure',{'id':figure.id, 'page':pagebefore})}}" title="Suivant">Pécédent</a></li>
+                  {% endif  %}
+                  {% for i in range(0, totalpage) %} 
+                  <a href="{{path('d_jview_detailfigure',{'id':figure.id, 'page':i})}}">-{{loop.index}}-</a>
+                  {% endfor %}
+                  {% if page <= totalpage %}
+                <li><a id="next" idarticle="{{figure.id}}" href="{{path('d_jview_detailfigure',{'id':figure.id, 'page':pagenext})}}" title="Suivant">Suivant</a></li>
+                  {% endif  %}
+                </ul>
+                </nav>
                 <!-- Comment -->
-               
 
             </div>
         </div>
@@ -139,5 +153,7 @@
 
 <script src="{{asset('public/jsp/imageprincipale.js')}}"></script>
 <script src="{{asset('public/jsp/jalileJS.js')}}"></script>
+<script src="{{asset('public/jsp/paginator.js')}}"></script>
+
 
 {% endblock %}

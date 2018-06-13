@@ -15,6 +15,12 @@ class FiguresType extends AbstractType
     {
         $builder->add('figure_Name', \Symfony\Component\Form\Extension\Core\Type\TextType::class)
                 ->add('figureDescription', \Symfony\Component\Form\Extension\Core\Type\TextareaType::class)
+                ->add('categories', \Symfony\Component\Form\Extension\Core\Type\ChoiceType::class,array('choices'=> array(
+                        'Ski'=>'ski',
+                        'Snowbord'=> 'Snowbord',
+                )
+                        
+                ))
                 ->add('videofigure', \Symfony\Component\Form\Extension\Core\Type\CollectionType::class, array(
                         'entry_type'   => VideosType::class,
                         'prototype' => true,

@@ -14,6 +14,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('username')
+                ->add('userphoto', \Symfony\Component\Form\Extension\Core\Type\FileType::class)
                 ->add('password')
                 ->add('mail')
                 ->add('save', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class);
