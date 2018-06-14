@@ -43,7 +43,7 @@ class Figures
    
     /**
      *@ORM\OneToMany(targetEntity=Pictures::class, cascade={"persist", "remove"}, mappedBy="figure")
-     *@Assert\File( mimeTypes = {"application/pdf", "application/x-pdf"}) 
+     * @Assert\File( maxSize = "100k",maxSizeMessage = "Taille incorrect." )
      *
      */
 
@@ -61,7 +61,7 @@ class Figures
      * @var string
      *
      * @ORM\Column(name="figure_name", type="string", length=255, unique=true)
-     * @Assert\Length(min=15, minMessage = "Le nom de la figure doit comporter au moin 15 caractére.")
+     * @Assert\Length(max=15, maxMessage = "Le nom de la figure ne doit pas dépasser 15 caractéres.")
      */
     private $figureName;
 
@@ -213,6 +213,7 @@ class Figures
     public function addPicture(\DJ\viewBundle\Entity\Pictures $picture)
     {
         $this->picture[] = $picture;
+
         $picture->setFigure($this);
 
         return $this;

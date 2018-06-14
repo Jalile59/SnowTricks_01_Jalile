@@ -1,6 +1,8 @@
 <?php
 
 namespace DJ\viewBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -125,6 +127,7 @@ class Pictures
     public function setFigure(\DJ\viewBundle\Entity\Figures $figure )
     {
         $this->figure = $figure;
+
 
         return $this;
     }

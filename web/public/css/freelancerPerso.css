@@ -1,11 +1,28 @@
 
+
+
+#imageacceuil{
+
+background-image: url('/SnowTricks_01//web/public/img/petit som avalanche.jpg');
+background-size: 100%; 
+border-radius: 0px; 
+background-repeat:no-repeat; 
+height: 900px;
+	
+}
+
 @media Screen and (max-width: 640px){
+	#imageacceuil{
+		height: auto;
+		
+	}
+	
 	#footer{
 		display: none;
 	}
+
 }
-
-
+	
 .table-bordered {
 border: 1px solid #dddddd;
 border-collapse: separate;
