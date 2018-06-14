@@ -1,5 +1,5 @@
 d_jview_homepage:
-    path:     /{sucess}
+    path:     /
     defaults: { _controller: DJviewBundle:Default:index, sucess: 0}
                              
     

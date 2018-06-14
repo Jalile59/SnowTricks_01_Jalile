@@ -124,12 +124,12 @@ class DefaultController extends Controller
         $users = $this->getUser();
         
         
-        if($request->isMethod('POST')){
+        if($request->isMethod('POST')and $form->handleRequest($request)->isValid()){
             
                                         
             $figure->setFigureCreatedate(new \DateTime());
             
-            $form->handleRequest($request);
+            
             $figure->setUsers($users);
            
            

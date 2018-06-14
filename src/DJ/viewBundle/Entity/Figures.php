@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="figures")
  * @ORM\Entity(repositoryClass="DJ\viewBundle\Repository\FiguresRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Figures
 {   
@@ -42,7 +43,7 @@ class Figures
    
     /**
      *@ORM\OneToMany(targetEntity=Pictures::class, cascade={"persist", "remove"}, mappedBy="figure")
-     * 
+     *@Assert\File( mimeTypes = {"application/pdf", "application/x-pdf"}) 
      *
      */
 
@@ -60,6 +61,7 @@ class Figures
      * @var string
      *
      * @ORM\Column(name="figure_name", type="string", length=255, unique=true)
+     * @Assert\Length(min=15, minMessage = "Le nom de la figure doit comporter au moin 15 caractére.")
      */
     private $figureName;
 
@@ -67,6 +69,7 @@ class Figures
      * @var string
      *
      * @ORM\Column(name="figure_description", type="text")
+     * @Assert\NotBlank()
      */
     private $figureDescription;
 
