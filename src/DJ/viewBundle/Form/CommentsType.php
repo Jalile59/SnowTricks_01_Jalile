@@ -13,7 +13,7 @@ class CommentsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('commentContent')
+        $builder->add('commentContent', \Symfony\Component\Form\Extension\Core\Type\TextareaType::class)
                 ->add('Envoi', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class);
     }/**
      * {@inheritdoc}
