@@ -39,7 +39,7 @@ function createelementIMG(test){
     t= test.id;
     link = test.src;
     link2 ="https://www.youtube.com/embed/TYbUYI6KN_E";
-    console.log(t);
+    //console.log(t);
     
     newelement = document.createElement("img");
     newelement.setAttribute("id", "picture");
@@ -62,7 +62,7 @@ function createelementVIDEO(test){
     t= test.id;
     link = test.src;
     link2 ="https://www.youtube.com/embed/TYbUYI6KN_E";
-    console.log(t);
+   // console.log(t);
     
     newelement = document.createElement("iframe");
     newelement.setAttribute("id", "screen");
@@ -71,7 +71,7 @@ function createelementVIDEO(test){
     newelement.setAttribute("src", link);
     
     supp= imgpricipale.removeChild(parentel);
-    console.log(supp);
+   // console.log(supp);
     imgpricipale.appendChild(newelement);
     
     //(parentel).replaceWith($(newelement));
@@ -82,7 +82,7 @@ function createelementVIDEO(test){
 
 function imageview(element){
     
-    console.log(element);
+    //console.log(element);
     
    var link = element.getAttribute('src');
     
@@ -107,7 +107,7 @@ function videosize(){
 }
 
 function im(){
-    console.log("ok");
+   // console.log("ok");
 }
 
 function videolives(thiselement){
@@ -133,11 +133,11 @@ var video = document.getElementsByClassName("video");
 var imgpricipale = document.getElementById("imagePincipale");
 parentel = imgpricipale.childNodes[1];
 
-console.log(parentel);
+//console.log(parentel);
 
 var nw = document.getElementById("videoprincipale");
 
-console.log(video);
+//console.log(video);
 
 //console.log($('#imagePincipale::nth-child(1)'))
 

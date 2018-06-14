@@ -71,10 +71,11 @@
                     <div class="col-md-4">
                         <a> Catégorie : {{figure.categories}}</a>
                     </div>
+                    {%if figure.figureUpdatedate %}
                     <div class="col-md-4">
-                        <a> </a>
+                        <a> Mise à jour: {{figure.figureUpdatedate|date('M-d-Y H:i:s') }} </a>
                     </div>
-
+                    {% endif %}
                 
                 </div>
                 <hr>

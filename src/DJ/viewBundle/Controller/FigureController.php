@@ -54,19 +54,15 @@ class FigureController extends Controller {
 
     }
     
-    public function ajaxuploadAction($id){
+    public function ajaxuploadAction($id, $idarticle){
       
-//        var_dump($_FILES);
-//        die;
         $npicture = new UploadedFile($_FILES['myfile']['tmp_name'], $_FILES['myfile']['name']);
-        
-//        var_dump($_FILES);
-        
-//        die;
-        
-        
+             
         $em = $this->getDoctrine()->getManager();
+        $em_2 = $this->getDoctrine()->getManager();
         $picture = $em->getRepository('DJviewBundle:Pictures')->find($id);
+        $figure = $em_2->getRepository('DJviewBundle:Figures')->find($idarticle);
+        $figure->setFigureUpdatedate(new \DateTime());
         
        
         
@@ -131,6 +127,7 @@ class FigureController extends Controller {
         
         
         $figure->setFigureDescription($description);
+        $figure->setFigureUpdatedate(new \DateTime());
         
         $em->flush();
         

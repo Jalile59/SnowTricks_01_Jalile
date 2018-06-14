@@ -1,5 +1,5 @@
 d_jview_homepage:
-    path:     /{sucess}
+    path:     /
     defaults: { _controller: DJviewBundle:Default:index, sucess: 0}
                              
     
@@ -26,7 +26,7 @@ d_jview_modification:
     defaults: {_controller: DJviewBundle:Figure:modificationfigure}
     
 d_jview_modification_ajaxupload:
-    path:    /ajaxpicture/{id}
+    path:    /ajaxpicture/{id}/{idarticle}
     defaults: {_controller: DJviewBundle:Figure:ajaxupload}
     
 d_jview_modification_ajaxvideo:

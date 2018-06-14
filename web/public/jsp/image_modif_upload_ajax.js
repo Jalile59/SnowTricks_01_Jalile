@@ -1,4 +1,7 @@
     elements = document.querySelectorAll("#fileuploader");
+    element_2 = document.getElementById("auteur");
+    idarticle = element_2.getAttribute("idarticle");
+   // console.log("idarticle ="+idarticle);
 
 
 $(document).ready(function()
@@ -10,7 +13,7 @@ $(document).ready(function()
     $(elements[i]).uploadFile({
     
     
-    url:"../ajaxpicture/"+id, // ma varible dans l'url vaut null.
+    url:"../ajaxpicture/"+id+"/"+idarticle, // ma varible dans l'url vaut null.
     fileName:"myfile",
     dragDrop:false,
     showDownload: false,
