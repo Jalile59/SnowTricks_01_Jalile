@@ -29,6 +29,21 @@
                 <p><span class="glyphicon glyphicon-time"></span> {{figure.figureCreateDate|date('d-M-Y')}}</p>
 
                 <hr>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-4">
+
+                        {% if app.user == figure.users or is_granted('ROLE_ADMIN') %}
+                       <a href="{{path('d_jview_delfigure',{id: figure.id})}}"onclick="popdeleted()"><img src="{{asset('public/img/supprimer.png')}}" alt=""></a> 
+                        {% endif %}
+                    </div>
+                    <div class="col-md-2" style="align-content: center">
+
+                        {% if app.user == figure.users or is_granted('ROLE_ADMIN') %}
+                       <a href="{{path('d_jview_modification',{id: figure.id})}}"><img src="{{asset('public/img/bouton-modifier_318-77528.jpg')}}" alt=""></a> 
+                        {% endif %}
+                    </div>
+                </div>
+                <hr>
 
                 <!-- Preview Image -->
                 <div id="imagePincipale" class="screen">

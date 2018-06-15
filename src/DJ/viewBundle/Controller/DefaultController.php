@@ -58,7 +58,7 @@ class DefaultController extends Controller
             //retourn le nombre de commentaire.
             $totalcomments = count($commentsNpage);
             $totalpage = intval($totalcomments/5);
-            dump(gettype($totalpage));
+            dump($figure);
 
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
