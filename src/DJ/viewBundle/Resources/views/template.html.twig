@@ -189,6 +189,50 @@
         </a>
     </div>
 
+        <nav id="mainNav_footer" class="navbar navbar-default navbar-fixed-Bottom  navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+
+                <a id="nameuser" class="navbar-brand" href="{{path('d_jview_homepage')}}">{% if app.user %}  {{app.user.username}} {% endif %}</a><br>
+                
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class=" id="">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="{{path('d_jview_homepage')}}">Figures</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="{{path('d_jview_addfigure')}}">Nouvelle Figure</a>
+                    </li>
+
+                    <li class="page-scroll">
+                    </li>
+
+                    {% if app.user %}
+                    <li class="page-scroll">
+                        <a href="{{path('logout')}}"><img src="{{asset('public/img/exit.png')}}"></a>
+                    </li> 
+                    {% endif %}
+                     {% if app.user %}{% else %}
+                    <li class="page-scroll">
+                        <a href="{{ path('d_jview_inscription')}}">Inscription</a>
+                    </li>
+                    <li class="page-scroll">
+                    <a href="{{path('login')}}">Connection</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
     {% block modale %}
     
     {% endblock %}

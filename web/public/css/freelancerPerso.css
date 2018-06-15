@@ -1,5 +1,16 @@
+#card{
+	margin: 15px; 
+	height: 450px;
+}
+#mainNav_footer{
+	display: none;
+	
+}
 
-
+#indexbody{
+	margin-top: 100px;
+	padding: 0px;
+}
 
 #imageacceuil{
 
@@ -11,18 +22,7 @@ height: 900px;
 	
 }
 
-@media Screen and (max-width: 640px){
-	#imageacceuil{
-		height: auto;
-		
-	}
-	
-	#footer{
-		display: none;
-	}
-	
 
-}
 	
 .table-bordered {
 border: 1px solid #dddddd;
@@ -227,4 +227,42 @@ p{
     padding: 13px 20px;
     font-size: 13px;
     font-weight: 600;
+}
+
+@media Screen and (max-width: 640px){
+	#imageacceuil{
+		height: 450px;
+		background-image: url('/SnowTricks_01/web/public/img/fei-montagnes-enneigees-35-320-480.jpg');
+		
+	}
+	
+	#footer{
+		display: none;
+	}
+	
+	#mainNav_footer{
+		display: block;
+		
+	}
+	
+	#mainNav{
+		display: none;
+		margin: 0px;
+		
+	}
+	
+	#nameuser{
+		display:none;
+	}
+	
+	#indexbody{
+		margin-top: 0px;
+	}
+	
+	#card{
+	margin: auto; 
+	height: auto;
+	}
+	
+
 }

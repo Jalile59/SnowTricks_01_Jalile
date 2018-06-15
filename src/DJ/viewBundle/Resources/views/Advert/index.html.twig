@@ -5,7 +5,7 @@
 
      <!-- Page Content -->
 
-    <div class="container-fluid" style="margin-top: 100px; padding: 0px;">
+    <div id="indexbody" class="container-fluid">
         {% if sucess == 1 %}
         <div style="margin-bottom: 0px; text-align: center; ;" class="alert alert-success" role="alert" id="success">       
             <a style="padding-top: 80px"> Sauvegardé avec sucess !</a>
@@ -34,7 +34,7 @@
         <div class="row text-center">
             
             {%for figure in figure%}
-            <div id = "card" class="col-md-2 col-sm-6 hero-feature card" style="margin: 15px; height: 450px;" >
+            <div id = "card" class="col-md-2 col-sm-6 col-xs-12 hero-feature card">
                 <div class="thumbnail">
                     <div class="row">
                         <div class="col-md-6">
@@ -81,10 +81,10 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-md-2 col-md-offset-5" >
-            <a><button id="plus" class="btn-primary" >Voir plus</button></a>
         </div>
     </div>
         <hr>
+        
 
 <script src="{{asset('public/jsp/messagedelelted.js')}}"></script>
 
