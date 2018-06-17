@@ -1,6 +1,6 @@
 d_jview_homepage:
     path:     /
-    defaults: { _controller: DJviewBundle:Default:index, sucess: 0}
+    defaults: { _controller: DJviewBundle:Default:index}
                              
     
 d_jview_detailfigure:

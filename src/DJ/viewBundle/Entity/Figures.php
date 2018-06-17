@@ -43,7 +43,6 @@ class Figures
    
     /**
      *@ORM\OneToMany(targetEntity=Pictures::class, cascade={"persist", "remove"}, mappedBy="figure")
-     * @Assert\File( maxSize = "100k",maxSizeMessage = "Taille incorrect." )
      *
      */
 

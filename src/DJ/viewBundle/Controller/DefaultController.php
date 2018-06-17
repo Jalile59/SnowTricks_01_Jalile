@@ -11,17 +11,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class DefaultController extends Controller
 {
 
-    public function indexAction($sucess)
+    public function indexAction()
     {   
 
         
         $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->myfindall();
         
-        dump($figure);
                 
         return $this->render('DJviewBundle:Advert:index.html.twig', array(
-            'figure'=>$figure,
-            'sucess'=>$sucess
+            'figure'=>$figure
+            
         ));
     }
     
@@ -138,7 +137,9 @@ class DefaultController extends Controller
 //            die(var_dump($file));
             $em->flush();
             
-             return $this->redirectToRoute('d_jview_homepage', array('sucess'=>1));
+            $this->addFlash('notice', 'Save ok');
+            
+             return $this->redirectToRoute('d_jview_homepage');
         }
         
         
