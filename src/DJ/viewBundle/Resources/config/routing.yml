@@ -4,7 +4,7 @@ d_jview_homepage:
                              
     
 d_jview_detailfigure:
-    path:    /figure/{id}/{page}
+    path:    /figure/{name}/{id}/{page}
     defaults: {_controller: DJviewBundle:Default:detailfigure, page: 1}
     
 
