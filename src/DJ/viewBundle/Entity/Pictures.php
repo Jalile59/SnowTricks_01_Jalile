@@ -69,8 +69,17 @@ class Pictures
     public function setPictureLink( $pictureLink)
     {
 //        var_dump($pictureLink, $_FILES);
+        // vérification pour les ajouts de fixtures
+        var_dump($pictureLink);
         
-      
+        
+        if (gettype($pictureLink)== 'string'){
+            
+            $this->pictureLink = $pictureLink;
+            
+        }else{
+            
+           
         $nname = $this->newname($pictureLink);
         
         $test = $pictureLink->getClientOriginalExtension();
@@ -78,7 +87,8 @@ class Pictures
         $pictureLink->move('../web/images/', $nname);
         
         $this->pictureLink = $nname;
-
+        
+        }
 
         return $this;
     }
