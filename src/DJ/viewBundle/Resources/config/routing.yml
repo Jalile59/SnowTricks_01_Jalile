@@ -36,3 +36,7 @@ d_jview_modification_ajaxvideo:
 d_jview_modification_ajaxdesciption:
     path:    /updatedescription/{id}
     defaults: {_controller: DJviewBundle:Figure:ajaxupdatedescription}
+    
+d_jview_fakedata:
+    path:    /fakedata
+    defaults: {_controller: DJviewBundle:Default:fixturesdoctrine}

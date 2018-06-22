@@ -4,6 +4,8 @@ namespace DJ\usersecurityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
+
 
 /**
  * User
@@ -283,6 +285,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
      */
     public function setUserphoto($userphoto)
     {
+        if(gettype($userphoto)=='string'){
+         
+            $this->userphoto = $userphoto;
+            
+        }else{
         $this->userphoto = $userphoto;
         $newnamefile =  md5(uniqid()).'.'.$userphoto->getClientOriginalExtension();
         
@@ -291,7 +298,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
        
         
         $this->userphoto = $newnamefile;
-
+        }
         return $this;
     }
 
