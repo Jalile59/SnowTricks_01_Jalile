@@ -29,9 +29,11 @@ class DJFixtures extends Fixture
        
         $user = new \DJ\usersecurityBundle\Entity\User();
         
+
+        
         $user->setUsername('doctrine');
         $user->setMail('doctrine@doctrine.com');
-        $user->setPassword('123');
+        $user->setPassword(123);
         $user->setUserphoto('82b0460b8e393e3bb8323fcffef1cad1.jpg');
         $user->setUserCreateDate(new \DateTime());
 
@@ -51,7 +53,23 @@ class DJFixtures extends Fixture
             $picture->setPictureCreatedate(new \DateTime());
             $picture->setPictureLink($nameTricks[$i].".jpg");
             
+            
+
+            
+            
+            for ($f = 0; $f < 15; $f++){
+                
+                $comment = new \DJ\viewBundle\Entity\Comments();
+                $comment->setCommentContent('un commentaire');
+                $comment->setFigureId($figure);
+                $comment->setUserId($user);
+            }
+            
             $manager->persist($figure);
+
+            
+            $manager->persist($comment);
+
             $manager->persist($picture);
             
         }

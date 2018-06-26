@@ -126,7 +126,11 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $bcrypt = new \Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder(12);
+        
+        $encode = $bcrypt->encodePassword($password, true);
+        
+        $this->password = $encode;
 
         return $this;
     }

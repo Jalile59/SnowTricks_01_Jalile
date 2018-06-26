@@ -52,12 +52,13 @@ class DefaultController extends Controller
             
             $comments = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments')->pagination($id,$page);
             
+            dump($comments);
             
             $commentsNpage = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments')->findBy(array('figureId'=>$id));
             //retourn le nombre de commentaire.
             $totalcomments = count($commentsNpage);
             $totalpage = intval($totalcomments/5);
-            dump($figure);
+            dump($totalpage);
 
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
@@ -111,7 +112,8 @@ class DefaultController extends Controller
   * 
   * @param Request $request
   * @return type
-  * @Security("has_role('ROLE_USER')")
+  * @Security("has_role('ROLE_ADMIN')")
+  * 
   */
     
     public function addfiguresAction(Request $request){
