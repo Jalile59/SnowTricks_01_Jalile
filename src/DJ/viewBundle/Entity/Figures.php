@@ -4,6 +4,8 @@ namespace DJ\viewBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 
 /**
@@ -12,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="figures")
  * @ORM\Entity(repositoryClass="DJ\viewBundle\Repository\FiguresRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("figureName", message="Cette figure existe déja !")
  */
 class Figures
 {   

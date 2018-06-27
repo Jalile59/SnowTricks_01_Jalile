@@ -70,7 +70,6 @@ class Pictures
     {
 //        var_dump($pictureLink, $_FILES);
         // vérification pour les ajouts de fixtures
-        var_dump($pictureLink);
         
         
         if (gettype($pictureLink)== 'string'){
