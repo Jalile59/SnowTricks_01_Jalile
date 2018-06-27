@@ -1,13 +1,12 @@
 
 
-
 idarticle = document.getElementById("auteur");
 id = idarticle.getAttribute("idarticle");
 
 console.log('idarticle ='+id);
 
 
-$('#formdescription').click(function(event){
+$('#formdescription').submit(function(event){
     event.preventDefault();
     formdatas = $(this).serialize()
                   $.ajax({
