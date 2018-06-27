@@ -43,6 +43,7 @@ class FigureController extends Controller {
         $id = 67;
         
         $em2 = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Pictures');
+        
         $mpicture = $em2->find($id);
         
         dump($figure);
@@ -50,7 +51,9 @@ class FigureController extends Controller {
         
         
         
-    return $this->render('DJviewBundle:Advert:modify_viewfigure.html.twig', array('figure'=>$figure));
+    return $this->render('DJviewBundle:Advert:modify_viewfigure.html.twig', array('figure'=>$figure,
+                                                                                  'noimage'=>'noimge.jpg'
+        ));
 
     }
     
@@ -91,9 +94,16 @@ class FigureController extends Controller {
 
     function ajaxvideoAction($id){
         
+        
+        
+        $result [] ='';
+        
+        if ($_POST['link']){
+         
+            
         $link = $_POST['link'];
         
-//        var_dump($link);
+            //        var_dump($link);
         $em = $this->getDoctrine()->getManager();
         $videodata = $em->getRepository('DJviewBundle:Videos');
         $video = $videodata->find($id);
@@ -102,9 +112,17 @@ class FigureController extends Controller {
         
         $em->flush();
         
-        $result [] ='';
+        
         $result ['sucess']= 1;
         $result ['link'] = $link;
+            
+            
+            
+        }else{
+            $result ['sucess'] ='erreur varible link vide';
+            
+        }
+
         
         $retourjson = new JsonResponse($result);
         
@@ -139,5 +157,21 @@ class FigureController extends Controller {
         return new JsonResponse($result);
         
         
+    }
+    
+    function ajaxsuppAction($id){
+        
+        $em = $this->getDoctrine()->getManager();
+        $getpicture = $em->getRepository('DJviewBundle:Pictures');
+        
+        $picture = $getpicture->find($id);
+        
+        $em->remove($picture);
+        $em->flush();
+        
+        $result[] = '';
+        $result['sucess'] = 1;
+        
+        return new JsonResponse($result);
     }
 }

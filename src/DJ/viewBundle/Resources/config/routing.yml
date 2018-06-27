@@ -40,3 +40,9 @@ d_jview_modification_ajaxdesciption:
 d_jview_fakedata:
     path:    /fakedata
     defaults: {_controller: DJviewBundle:Default:fixturesdoctrine}
+    
+d_jview_supprimerphoto:
+    path:    /delPicture/{id}
+    defaults: {_controller: DJviewBundle:Figure:ajaxsupp} 
+    
+    

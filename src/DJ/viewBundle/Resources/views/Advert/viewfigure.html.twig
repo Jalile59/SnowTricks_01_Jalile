@@ -47,12 +47,16 @@
 
                 <!-- Preview Image -->
                 <div id="imagePincipale" class="screen">
-                {% for figure in figure.picture %}
-                
-                {% if loop.index == 1 %}
-                <img id="videos" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{figure.pictureLink}}" alt="">
-                {% endif %}
+                  {% if figure.picture|length == 0 %}
+                    <img id="videos" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{noimage}}" alt="">
+                {% else %} 
+                     {% for figure in figure.picture %}
+                    {% if loop.index == 1 %}
+                        <img id="videos" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{% if figure.pictureLink %}{{figure.pictureLink}}{% else %}{{noimage}} okok{% endif %}" alt="">
+                    {% endif %}
+
                 {% endfor %}
+                {% endif %}
                 </div>
                 <div id="videoprincipale" onclick="tes(this)" >
                 </div>

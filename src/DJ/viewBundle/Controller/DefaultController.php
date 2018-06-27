@@ -19,7 +19,8 @@ class DefaultController extends Controller
         
                 
         return $this->render('DJviewBundle:Advert:index.html.twig', array(
-            'figure'=>$figure
+            'figure'=>$figure,
+            'noimage'=>'noimge.jpg'
             
         ));
     }
@@ -32,6 +33,7 @@ class DefaultController extends Controller
         
         $comment = new \DJ\viewBundle\Entity\Comments();
         $form = $this->createForm(\DJ\viewBundle\Form\CommentsType::class,$comment);
+        
         
         
         if($figure){
@@ -63,6 +65,7 @@ class DefaultController extends Controller
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
                 'figure'=>$figure,
+                'noimage'=>'noimge.jpg',
                 'pagenext'=>$page+1,
                 'pagebefore'=>$page-1,
                 'page'=>$page,

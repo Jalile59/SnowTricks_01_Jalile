@@ -56,13 +56,17 @@
                         </div>
 
                     </div>
-                    {% for figure in figure.picture %}
-                
+
+                {% if figure.picture|length == 0 %}
+                    <img id="videos" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{noimage}}" alt="">
+                {% else %} 
+                     {% for figure in figure.picture %}
                     {% if loop.index == 1 %}
-                    <img src="{{asset('images/')}}{{figure.pictureLink}}" alt="">
-                    
+                        <img id="videos" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{% if figure.pictureLink %}{{figure.pictureLink}}{% else %}{{noimage}} okok{% endif %}" alt="">
                     {% endif %}
-                    {% endfor %}
+
+                {% endfor %}
+                {% endif %}
                     <div class="caption">
                         <h3>{{figure.figureName}}</h3>
                         <p>{{figure.figureDescription|truncate(50, false, '...')|raw}}</p>
