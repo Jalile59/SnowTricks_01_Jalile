@@ -159,7 +159,9 @@ class FigureController extends Controller {
         
     }
     
-    function ajaxsuppAction($id){
+    function ajaxsuppAction($media,$id){
+        
+        if($media==='picture'){
         
         $em = $this->getDoctrine()->getManager();
         $getpicture = $em->getRepository('DJviewBundle:Pictures');
@@ -170,8 +172,34 @@ class FigureController extends Controller {
         $em->flush();
         
         $result[] = '';
+        $result['type'] = 'picture';
         $result['sucess'] = 1;
         
         return new JsonResponse($result);
+        
+        }elseif ($media === 'video') {
+            
+            $em = $this->getDoctrine()->getManager();
+            $getvideo = $em->getRepository('DJviewBundle:Videos');
+            $video = $getvideo->find($id);
+            
+            
+            $em->remove($video);
+            $em->flush();
+            
+        $result[] = '';
+        $result['type'] = 'video';
+        $result['sucess'] = 1;
+        
+        return new JsonResponse($result);
+
+        }else{
+            
+        $result[] = '';
+        $result['type'] = 'inconnu';
+        $result['sucess'] = 0;
+        
+        return new JsonResponse($result);
+        }
     }
 }

@@ -40,11 +40,11 @@
                         <a href="" id="supppicture"><img src="{{asset('public/img/supprimer.png')}}" alt=""></a>
                     </div>
                 {% if figure.picture|length == 0 %}
-                    <img id="videos" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{noimage}}" alt="">
+                    <img id="pictureP" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{noimage}}" alt="">
                 {% else %} 
                      {% for figure in figure.picture %}
                     {% if loop.index == 1 %}
-                        <img id="videos" idpicture="{{figure.id}}" linknoimage="{{asset('images/')}}{{noimage}}" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{% if figure.pictureLink %}{{figure.pictureLink}}{% else %}{{noimage}} {% endif %}" alt="">
+                        <img id="pictureP" idpicture="{{figure.id}}" linknoimage="{{asset('images/')}}{{noimage}}" class="img-responsive displayed" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{% if figure.pictureLink %}{{figure.pictureLink}}{% else %}{{noimage}} {% endif %}" alt="">
                     {% endif %}
 
                 {% endfor %}
@@ -56,28 +56,28 @@
                 <hr>
                 <div class="row" >
                     {% for figure in figure.picture %}
-                    <div class="col-md-2" style="margin-top: 5px" >
+                    <div id="div{{ figure.id }}" class="col-md-2" style="margin-top: 5px" >
                         <div class="row" >
                             <div class="col-lg-3 col-lg-offset-2" >
-                                <a href="#" id="" ><img src="{{asset('public/img/supprimer.png')}}" alt=""></a>
+                                <a href="#" id="picture{{ figure.id }}" idpict="{{ figure.id }}" onclick="suppPicture(this, event)" ><img src="{{asset('public/img/supprimer.png')}}" alt=""></a>
                             </div>
                             <div class="col-lg-3 col-lg-offset-1" >
                                 <div id="fileuploader" class="{{ loop.index }}" idphoto="{{figure.id}}"> </div>
                             </div>                        
                         </div> 
                         <div>
-                         <a href="#"id='image{{loop.index}}' ><img id="{{figure.id}}" class="img-responsive displayed img" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{figure.pictureLink}}" alt="" onclick="tes(this)"></a>                        
+                         <a href="#"id='image{{loop.index}}' ><img id="{{figure.id}}"  class="img-responsive displayed img" style="margin-left: auto; margin-right: auto;" src="{{asset('images/')}}{{figure.pictureLink}}" alt="" onclick="tes(this)"></a>                        
                         </div>
                     </div>
                     {% endfor %}
                     {% for figure in figure.videofigure %}
-                    <div id="videolive" class="col-md-2"style="margin-top: 5px">
+                    <div id="div{{ figure.id }}" class="col-md-2"style="margin-top: 5px">
                         <div class="row" >
                             <div class="col-lg-3 col-lg-offset-3" >
                                 <a href="javascript:void(0);" ><img idvideo="{{figure.id}}" id="mvideo{{figure.id}}" src="{{asset('public/img/bouton-modifier_318-77528.png')}}" alt="" onclick="modifvideo(this)"></a>
                             </div>
                             <div class="col-lg-3" >
-                                <a href="#"><img src="{{asset('public/img/supprimer.png')}}" alt=""></a>
+                                <a href="#"  idvideo="{{ figure.id }}" onclick="suppVideo(this, event)"><img src="{{asset('public/img/supprimer.png')}}" alt=""></a>
                             </div>
                         </div>
                         
@@ -101,10 +101,12 @@
                     <form id=formdescription method="post">
                         <textarea id="desciption" rows="15" cols="120" type="text" name="description"/> {{figure.figureDescription}}</textarea>
                     
-                    <a href="{{path('d_jview_delfigure',{id: figure.id})}}" ><button type="button" class="btn btn-danger">Supprimer</button></a>
-                    <input class="btn btn-primary" type="submit"/>
+                    <input id="submitform" class="btn btn-primary" type="submit"/>
                     </form> 
-                    
+                        <div style="margin-top: 10px;" >
+                            <a href="{{path('d_jview_delfigure',{id: figure.id})}}" ><button type="button" class="btn btn-danger">Supprimer</button></a>
+
+                        </div>
                 </div>
 
            
