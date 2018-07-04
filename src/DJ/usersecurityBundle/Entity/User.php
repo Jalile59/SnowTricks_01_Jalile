@@ -77,6 +77,8 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
     private $roles=array();
     
     public function __construct() {
+        
+        $this->sendmail();
 
         $this->userCreateDate = new \DateTime();
         $this->roles [] = 'ROLE_ADMIN';
@@ -314,5 +316,18 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
     public function getUserphoto()
     {
         return $this->userphoto;
+    }
+    
+    public function sendmail(\Swift_Mailer $mailer){
+        
+        
+        $message = (new \Swift_Message('Confimation Inscription SnowTricks'))
+                ->setFrom('SnowTrick@gmail.com')
+                ->setTo('jal.djellouli@gmail.com')
+                ->setBody('un mail');
+        
+        $mailer->send($message);
+        
+        
     }
 }

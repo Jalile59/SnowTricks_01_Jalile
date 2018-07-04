@@ -73,21 +73,13 @@ class DefaultControllerTest extends WebTestCase
     public function testaddfigure(){
         
         
-//        $client     = static::createClient();
-        
-//        $client = static::createClient(array(), array(
-//            'PHP_AUTH_USER' => 'doctrine',
-//            'PHP_AUTH_PW'   => '123',
-//        ));
+       $client     = static::createClient();
         
         $this->logIn();
         
-        
-//        $crawler   = $client->request('GET', '/ajoutFigure/');
         $crawler = $this->client->request('GET', '/ajoutFigure/');
+        $this->assertContains('Ajout Figure', $crawler->filter('h2')->getNode(0)->nodeValue);
 
-        
-        //$this->assertContains('Bienvenue sur SnowTricks', $crawler->filter('h1')->getNode(0)->nodeValue);
 
         /*
         $form = $crawler->selectButton('save')->form();
@@ -100,14 +92,18 @@ class DefaultControllerTest extends WebTestCase
         
         $crawler =$client->submit($form);
         */
-      //  $crawler = $client->followRedirect();
-        
+
+       //
+       // 
         echo $client->getResponse()->getContent();
         
     }
 
     private function logIn()
+            
+            
     {
+        
         $session = $this->client->getContainer()->get('session');
 
         // the firewall context (defaults to the firewall name)

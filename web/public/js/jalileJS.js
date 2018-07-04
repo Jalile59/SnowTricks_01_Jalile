@@ -5,6 +5,6 @@ $(function(){
 
 function mpicture(element){
     
-    element.childNodes[]
+  //  element.childNodes[]
     
 }
