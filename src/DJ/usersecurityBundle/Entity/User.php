@@ -78,8 +78,6 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
     
     public function __construct() {
         
-        $this->sendmail();
-
         $this->userCreateDate = new \DateTime();
         $this->roles [] = 'ROLE_ADMIN';
         $this->salt= '';
@@ -318,16 +316,4 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
         return $this->userphoto;
     }
     
-    public function sendmail(\Swift_Mailer $mailer){
-        
-        
-        $message = (new \Swift_Message('Confimation Inscription SnowTricks'))
-                ->setFrom('SnowTrick@gmail.com')
-                ->setTo('jal.djellouli@gmail.com')
-                ->setBody('un mail');
-        
-        $mailer->send($message);
-        
-        
-    }
 }
