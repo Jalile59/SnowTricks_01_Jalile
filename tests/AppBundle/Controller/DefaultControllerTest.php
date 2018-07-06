@@ -25,7 +25,7 @@ class DefaultControllerTest extends WebTestCase
     
     public function testLogin(){
         
-        $client = $this->createClient();
+        $client = $this->client;
         
         $crawler = $client->request('GET', '/login');
         
@@ -39,6 +39,9 @@ class DefaultControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
         
         //echo $client->getResponse()->getContent();
+        
+        $this->client = $client;
+        
         
        $this->assertContains('Bienvenue sur SnowTricks', $crawler->filter('h1')->getNode(0)->nodeValue);
         
@@ -64,7 +67,9 @@ class DefaultControllerTest extends WebTestCase
         $form['dj_usersecuritybundle_user[password]']   = $this->password;
         $form['dj_usersecuritybundle_user[mail]']       = $this->email;
         
-        $crawler    = $client->submit($form);        
+        $crawler    = $client->submit($form);  
+        
+        $this->client = $client;
         
         $this->assertEquals('DJ\viewBundle\Controller\DefaultController::inscriptionAction', $client->getRequest()->attributes->get('_controller'));
         
@@ -72,69 +77,31 @@ class DefaultControllerTest extends WebTestCase
     
     public function testaddfigure(){
         
+        $client = $this->client;
         
-//        $client     = static::createClient();
+        $crawler = $client->request('GET', '/login');
         
-//        $client = static::createClient(array(), array(
-//            'PHP_AUTH_USER' => 'doctrine',
-//            'PHP_AUTH_PW'   => '123',
-//        ));
+        $form = $crawler->selectButton('Connexion')->form();
         
-        $this->logIn();
+        $form['_username'] = 'doctrine';
+        $form['_password'] = '123';
+        
+        $crawler = $client->submit($form);
         
         
-//        $crawler   = $client->request('GET', '/ajoutFigure/');
-        $crawler = $this->client->request('GET', '/ajoutFigure/');
+        //$client = $this->client;
+        
+       //        $crawler   = $client->request('GET', '/ajoutFigure/');
+        $crawler = $client->request('GET', '/ajoutFigure/');
+       
+        $this->assertContains('Ajout Figure', $crawler->filter('h2')->getNode(0)->nodeValue);
 
-        
-        //$this->assertContains('Bienvenue sur SnowTricks', $crawler->filter('h1')->getNode(0)->nodeValue);
-
-        /*
-        $form = $crawler->selectButton('save')->form();
-        
-        $form['dj_viewbundle_figures[figure_Name]'] = 'John Doe23';
-        $form['dj_viewbundle_figures[categories]'] = 'ski';
-        $form['dj_viewbundle_figures[figureDescription]'] = 'une description';
-        $form['dj_viewbundle_figures[videofigure][__name__][videolink]'] = '<iframe width="560" height="315" src="https://www.youtube.com/embed/h9VG4oXz1VI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-        $form['dj_viewbundle_figures[picture][__name__][pictureLink]'] = __DIR__ . '/../../../web/images/seat belt.jpg'; 
-        
-        $crawler =$client->submit($form);
-        */
-      //  $crawler = $client->followRedirect();
+        //$crawler = $client->followRedirect();
         
         echo $client->getResponse()->getContent();
         
     }
 
-    private function logIn()
-    {
-        $session = $this->client->getContainer()->get('session');
 
-        // the firewall context (defaults to the firewall name)
-        $firewall = 'main';
-
-        $token = new UsernamePasswordToken('doctrine', 123, $firewall, array('ROLE_ADMIN'));
-        $session->set('_security_'.$firewall, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-        $this->client->getCookieJar()->set($cookie);
-    }
-
-    /*
-    
-    public function testAddFigure() {
-                
-    }
-    
-    public function testDetailFigure() {
-        
-    }
-        
-    
-    public function testDeleteFigure() {
-        
-    }
-    */
         
 }

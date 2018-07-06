@@ -1,18 +1,251 @@
 PHPUnit 7.0.0 by Sebastian Bergmann and contributors.
 
-[31;1mE[0m                                                                   1 / 1 (100%)
+.                                                                   1 / 1 (100%)<!DOCTYPE html>
+<html lang="fr">
 
-Time: 306 ms, Memory: 14.00MB
+<head >
 
-There was 1 error:
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-1) Tests\AppBundle\Controller\DefaultControllerTest::testaddfigure
-Undefined variable: client
 
-C:\wamp64\www\SnowTricks_01\vendor\symfony\phpunit-bridge\DeprecationErrorHandler.php:108
-C:\wamp64\www\SnowTricks_01\tests\AppBundle\Controller\DefaultControllerTest.php:105
-C:\Users\Dev\AppData\Roaming\Composer\vendor\phpunit\phpunit\src\TextUI\Command.php:200
-C:\Users\Dev\AppData\Roaming\Composer\vendor\phpunit\phpunit\src\TextUI\Command.php:155
+    <title>Freelancer</title>
+    <!-- asset('bundles/ocplatform/css/main.css')  -->
+    <!-- Bootstrap Core CSS -->
+        
+    <link href="/app/djview/public/css/main_bootstrap.min_1.css" rel="stylesheet">
+        
+    <link href="/app/djview/public/css/main_bootstrap.css_2.css" rel="stylesheet">
+        
+    <link href="/app/djview/public/css/main_freelancer.min_3.css" rel="stylesheet">
+        
+    <link href="/app/djview/public/css/main_freelancerPerso_4.css" rel="stylesheet">
+        
+    <link href="/app/djview/public/css/main_wbbtheme_5.css" rel="stylesheet">
+        
+    <link href="/app/djview/public/css/main_font-awesome.min_6.css" rel="stylesheet">
+        <!-- Theme CSS 
+    <link href="../public/css/freelancer.min.css" rel="stylesheet">--
+    <link href="../public/css/wbbtheme.css" rel="stylesheet">
+    <link href="../public/css/freelancerPerso.css" rel="stylesheet"> 
 
-[37;41mERRORS![0m
-[37;41mTests: 1[0m[37;41m, Assertions: 0[0m[37;41m, Errors: 1[0m[37;41m.[0m
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    
+    
+        <!-- jQuery --
+    <script src="../public/css/js/jquery.min.js"></script>-->
+    
+        <script src="/public/js/jquery.min.js"></script>
+
+
+    <!-- Bootstrap Core JavaScript --
+    <script src="../public/css/js/bootstrap.min.js"></script>-->
+    <script src="/public/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="/public/js/jqBootstrapValidation.js"></script>
+    <script src="/public/js/contact_me.js"></script>
+    <script src="/public/js/jquery.wysibb.min.js"></script>
+
+
+    <!-- Theme JavaScript -->
+    <script src="/public/js/freelancer.min.js"></script>
+   
+    <!------Tinymce-->
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'#content' });</script>
+    
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<?php session_start (); ?>
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/">Bienvenue sur SnowTricks   doctrine </a><br>
+                
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/">Figures</a>
+                    </li>
+                                        <li class="page-scroll">
+                        <a href="/ajoutFigure/">Nouvelle Figure</a>
+                    </li>
+                    
+                    <li class="page-scroll">
+                    </li>
+
+                                        <li class="page-scroll">
+                        <a href="/logout"><img src="/public/img/exit.png"></a>
+                    </li> 
+                                                         </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+                
+
+                
+
+    <!-- Header -->
+
+<div class="row">
+    <div class="col-sm-6 col-lg-offset-3 " style="margin-top: 200px; margin-bottom: 150px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Ajout Figure</h2>
+                        <hr class="star-primary">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <form name="dj_viewbundle_figures" method="post" enctype="multipart/form-data"><div id="dj_viewbundle_figures"><div class="form-group"><label class="control-label required" for="dj_viewbundle_figures_figure_Name">Figure name</label><input type="text" id="dj_viewbundle_figures_figure_Name" name="dj_viewbundle_figures[figure_Name]" required="required" class="form-control" /></div><div class="form-group"><label class="control-label required" for="dj_viewbundle_figures_figureDescription">Figure description</label><textarea id="dj_viewbundle_figures_figureDescription" name="dj_viewbundle_figures[figureDescription]" required="required" class="form-control"></textarea></div><div class="form-group"><label class="control-label required" for="dj_viewbundle_figures_categories">Categories</label><select id="dj_viewbundle_figures_categories" name="dj_viewbundle_figures[categories]" class="form-control"><option value="ski">Ski</option><option value="Snowbord">Snowbord</option></select></div><div class="form-group"><label class="control-label required">Video:</label><div id="dj_viewbundle_figures_videofigure" data-prototype="&lt;div class=&quot;form-group&quot;&gt;&lt;label class=&quot;control-label required&quot;&gt;__name__label__&lt;/label&gt;&lt;div id=&quot;dj_viewbundle_figures_videofigure___name__&quot;&gt;&lt;div class=&quot;form-group&quot;&gt;&lt;label class=&quot;control-label required&quot; for=&quot;dj_viewbundle_figures_videofigure___name___videolink&quot;&gt;Videolink&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;dj_viewbundle_figures_videofigure___name___videolink&quot; name=&quot;dj_viewbundle_figures[videofigure][__name__][videolink]&quot; required=&quot;required&quot; maxlength=&quot;255&quot; class=&quot;form-control&quot; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;"></div></div><div class="form-group"><label class="control-label required">Image acceuil:</label><div id="dj_viewbundle_figures_picture" data-prototype="&lt;div class=&quot;form-group&quot;&gt;&lt;label class=&quot;control-label required&quot;&gt;__name__label__&lt;/label&gt;&lt;div id=&quot;dj_viewbundle_figures_picture___name__&quot;&gt;&lt;div class=&quot;form-group&quot;&gt;&lt;input type=&quot;file&quot; id=&quot;dj_viewbundle_figures_picture___name___pictureLink&quot; name=&quot;dj_viewbundle_figures[picture][__name__][pictureLink]&quot; required=&quot;required&quot; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;"></div></div><div class="form-group"><button type="submit" id="dj_viewbundle_figures_save" name="dj_viewbundle_figures[save]" class="btn-default btn">Save</button></div><input type="hidden" id="dj_viewbundle_figures__token" name="dj_viewbundle_figures[_token]" value="p5AssPGBGhiuXzW6L7Lr5mC5XgES8uWqka0KCqDWbQY" /></div></form>
+            
+        </div>
+    </div>
+</div>
+        
+<div class="well">
+    
+  
+  <a href="#" id="add_Pictures" class="btn btn-default">Ajouter une image</a>
+   
+  <a href="#" id="add_Videos" class="btn btn-default">Ajouter une video</a>
+  </div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/public/jsp/fromfigure.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer id="footer" class="text-center" style="margin-top: 15px;">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Localisation</h3>
+                        <p>Place de la liberté
+                            <br>83500, Toulon</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://twitter.com/djal596" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Freelancer</h3>
+                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Your Website 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+        <nav id="mainNav_footer" class="navbar navbar-default navbar-fixed-Bottom  navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+
+                <a id="nameuser" class="navbar-brand" href="/">  doctrine </a><br>
+                
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div >
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="/">Figures</a>
+                    </li>
+                                        <li class="page-scroll">
+                        <a href="/ajoutFigure/">Nouvelle Figure</a>
+                    </li>
+                                        <li class="page-scroll">
+                    </li>
+
+                                        <li class="page-scroll">
+                        <a href="/logout"><img src="/public/img/exit.png"></a>
+                    </li> 
+                                                         </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+        
+    
+
+</body>
+
+</html>
+
+
+Time: 794 ms, Memory: 22.00MB
+
+[30;42mOK (1 test, 1 assertion)[0m

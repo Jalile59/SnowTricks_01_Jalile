@@ -229,6 +229,12 @@ p{
     font-weight: 600;
 }
 
+#body_inscription{
+    
+    margin-top: 200px;
+    margin-bottom: 150px;
+}
+
 @media Screen and (max-width: 640px){
 	#imageacceuil{
 		height: 450px;
@@ -263,6 +269,15 @@ p{
 	margin: auto; 
 	height: auto;
 	}
+        
+        #inscriptipn{
+            margin: 20px;
+        }
+        
+        #body_inscription{
+            margin-top: 0px;
+            margin-bottom: 50px;
+        }
 	
 
 }
