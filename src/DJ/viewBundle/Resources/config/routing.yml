@@ -43,6 +43,10 @@ d_jview_fakedata:
     
 d_jview_supprimermedia:
     path:    /delPicture/{media}/{id}
-    defaults: {_controller: DJviewBundle:Figure:ajaxsupp} 
+    defaults: {_controller: DJviewBundle:Figure:ajaxsupp}
+    
+d_jview_testmail:
+    path:    /mailtest
+    defaults: {_controller: DJviewBundle:Default:test_mail}
     
     

@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/wamp64/www/SnowTricks_01/app/config/config.yml</file>
             <file>file:/C:/wamp64/www/SnowTricks_01/app/config/parameters.yml</file>
+<<<<<<< HEAD
             <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/viewBundle/Resources/views/Advert/addfigure.html.twig</file>
             <file>file:/C:/wamp64/www/SnowTricks_01/web/public/css/freelancerPerso.css</file>
             <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/usersecurityBundle/Entity/User.php</file>
@@ -18,6 +19,12 @@
             <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/viewBundle/Resources/views/Advert/index.html.twig</file>
             <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/viewBundle/Resources/views/Advert/modify_viewfigure.html.twig</file>
             <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/viewBundle/Resources/config/routing.yml</file>
+=======
+            <file>file:/C:/wamp64/www/SnowTricks_01/composer.json</file>
+            <file>file:/C:/wamp64/www/SnowTricks_01/src/DJ/usersecurityBundle/Entity/User.php</file>
+            <file>file:/C:/wamp64/www/SnowTricks_01/app/config/config_test.yml</file>
+            <file>file:/C:/wamp64/www/SnowTricks_01/tests/AppBundle/Controller/DefaultControllerTest.php</file>
+>>>>>>> Function-sendMail
         </group>
     </open-files>
 </project-private>

@@ -77,7 +77,7 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
     private $roles=array();
     
     public function __construct() {
-
+        
         $this->userCreateDate = new \DateTime();
         $this->roles [] = 'ROLE_ADMIN';
         $this->salt= '';
@@ -315,4 +315,6 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
     {
         return $this->userphoto;
     }
+    
+
 }

@@ -92,9 +92,20 @@ class DefaultController extends Controller
             
             $form->handleRequest($request);
             $em = $this->getDoctrine()->getManager();
-
+            
+            
+            $message = \Swift_Message::newInstance()
+            ->setSubject('Inscription SnowTricks')
+            ->setFrom('SnowTrick@hotmail.com')
+            ->setTo($users->getMail())
+            ->setBody($this->renderview('DJviewBundle:Advert:confirmation_mail.html.twig',array('name'=>$users->getUsername())),'text/html');
+        
+            $this->get('mailer')->send($message);
+            
             $em->persist($users);
             $em->flush();
+            
+            $this->addFlash('notice', 'Inscription confirmé');
             
             return $this->redirectToRoute('d_jview_homepage');
 
@@ -217,6 +228,36 @@ class DefaultController extends Controller
         
         return $this->redirectToRoute('d_jview_homepage');
     
+    }
+    
+/**
+  * 
+  * 
+  * 
+  * @Security("has_role('ROLE_ADMIN')")
+  * 
+*/
+    
+    public function test_mailAction(){
+        
+            $message = \Swift_Message::newInstance()
+            ->setSubject('Inscription SnowTricks')
+            ->setFrom('SnowTrick@hotmail.com')
+            ->setTo('jal.djellouli@gmail.com')
+            ->setBody($this->renderview('DJviewBundle:Advert:testmail.html.twig',array('name'=> 'test')),"text/html");
+        
+            $sender = $this->get('mailer')->send($message);
+                                               
+            if($sender){
+                
+                $debug['senderBoolean'] =$sender;
+                $debug['sucess'] = 1;
+                return new \Symfony\Component\HttpFoundation\JsonResponse($debug);
+            }else{
+                $debug['sender'] = $debug;
+                $debug['sucess'] = 0;
+                return new \Symfony\Component\HttpFoundation\JsonResponse($debug);
+            }
     }
     
     
