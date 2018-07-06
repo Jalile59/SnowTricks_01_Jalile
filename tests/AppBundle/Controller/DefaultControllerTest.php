@@ -13,8 +13,11 @@ class DefaultControllerTest extends WebTestCase
     private $login      = 'test_user_';
     private $email      = 'test_email_';
     private $password   = 'test_password';
-    
-    
+    private $crawler    = null;
+
+
+
+
     public function setUp()
     {
         $this->client = static::createClient();
@@ -42,7 +45,11 @@ class DefaultControllerTest extends WebTestCase
         
        $this->assertContains('Bienvenue sur SnowTricks', $crawler->filter('h1')->getNode(0)->nodeValue);
         
-    }
+    }  
+    
+    /*
+     * 
+     */
     
     
     public function testHomePage() {
@@ -70,58 +77,58 @@ class DefaultControllerTest extends WebTestCase
         
     }
     
+    private function getcurrentlogin(){
+        
+        $client = $this->createClient();
+        
+        $crawler = $client->request('GET', '/login');
+        
+        $form = $crawler->selectButton('Connexion')->form();
+        
+        $form['_username'] = 'doctrine';
+        $form['_password'] = '123';
+        
+        $crawler = $client->submit($form);
+        
+        $crawler = $client->followRedirect();
+        
+        $this->crawler = $crawler;
+        $this->client =$client;
+        
+        
+    }
+    
     public function testaddfigure(){
         
-        
-       $client     = static::createClient();
-        
-        $this->logIn();
+        $this->getcurrentlogin();
+  
+        $crawler = $this->crawler;
         
         $crawler = $this->client->request('GET', '/ajoutFigure/');
         $this->assertContains('Ajout Figure', $crawler->filter('h2')->getNode(0)->nodeValue);
 
 
-        /*
-        $form = $crawler->selectButton('save')->form();
         
-        $form['dj_viewbundle_figures[figure_Name]'] = 'John Doe23';
+       /* $form = $crawler->selectButton('Save')->form();
+       
+            
+        
+        $form['dj_viewbundle_figures[figure_Name]'] = 'John Doe1234';
         $form['dj_viewbundle_figures[categories]'] = 'ski';
         $form['dj_viewbundle_figures[figureDescription]'] = 'une description';
         $form['dj_viewbundle_figures[videofigure][__name__][videolink]'] = '<iframe width="560" height="315" src="https://www.youtube.com/embed/h9VG4oXz1VI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
         $form['dj_viewbundle_figures[picture][__name__][pictureLink]'] = __DIR__ . '/../../../web/images/seat belt.jpg'; 
+       
         
-        $crawler =$client->submit($form);
-        */
-
-       //
-       // 
-        echo $client->getResponse()->getContent();
+       $crawler = $this->client->submit($form);
+      */  
         
     }
 
-    private function logIn()
-            
-            
-    {
-        
-        $session = $this->client->getContainer()->get('session');
 
-        // the firewall context (defaults to the firewall name)
-        $firewall = 'main';
-
-        $token = new UsernamePasswordToken('doctrine', 123, $firewall, array('ROLE_ADMIN'));
-        $session->set('_security_'.$firewall, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-        $this->client->getCookieJar()->set($cookie);
-    }
 
     /*
     
-    public function testAddFigure() {
-                
-    }
     
     public function testDetailFigure() {
         
