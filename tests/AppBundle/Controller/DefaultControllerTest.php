@@ -37,9 +37,7 @@ class DefaultControllerTest extends WebTestCase
         $crawler = $client->submit($form);
         
         $crawler = $client->followRedirect();
-        
-        //echo $client->getResponse()->getContent();
-        
+                
         $this->client = $client;
         
         
@@ -88,18 +86,11 @@ class DefaultControllerTest extends WebTestCase
         
         $crawler = $client->submit($form);
         
-        
-        //$client = $this->client;
-        
-       //        $crawler   = $client->request('GET', '/ajoutFigure/');
         $crawler = $client->request('GET', '/ajoutFigure/');
        
         $this->assertContains('Ajout Figure', $crawler->filter('h2')->getNode(0)->nodeValue);
 
-        //$crawler = $client->followRedirect();
-        
-        echo $client->getResponse()->getContent();
-        
+             
     }
 
 
