@@ -235,6 +235,12 @@ p{
     margin-bottom: 150px;
 }
 
+#body_addfigure{
+
+    margin-top: 200px;
+    margin-bottom: 150px;
+}
+
 @media Screen and (max-width: 640px){
 	#imageacceuil{
 		height: 450px;
@@ -243,31 +249,31 @@ p{
 	}
 	
 	#footer{
-		display: none;
+            display: none;
 	}
 	
 	#mainNav_footer{
-		display: block;
+            display: block;
 		
 	}
 	
 	#mainNav{
-		display: none;
-		margin: 0px;
+            display: none;
+            margin: 0px;
 		
 	}
 	
 	#nameuser{
-		display:none;
+            display:none;
 	}
 	
 	#indexbody{
-		margin-top: 0px;
+            margin-top: 0px;
 	}
 	
 	#card{
-	margin: auto; 
-	height: auto;
+            margin: auto; 
+            height: auto;
 	}
         
         #inscriptipn{
@@ -277,6 +283,17 @@ p{
         #body_inscription{
             margin-top: 0px;
             margin-bottom: 50px;
+        }
+        
+        #body_addfigure{
+            margin-top: 0px;
+            margin-bottom: 50px;
+            margin: 20px;
+        }
+        
+        #add_Pictures{
+            
+            margin-bottom: 5px;
         }
 	
 
