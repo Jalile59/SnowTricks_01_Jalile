@@ -98,46 +98,6 @@ class DefaultControllerTest extends WebTestCase
         
     }
     
-    public function testaddfigure(){
-        
-        $this->getcurrentlogin();
-  
-        $crawler = $this->crawler;
-        
-        $crawler = $this->client->request('GET', '/ajoutFigure/');
-        $this->assertContains('Ajout Figure', $crawler->filter('h2')->getNode(0)->nodeValue);
-
-
-        
-       /* $form = $crawler->selectButton('Save')->form();
-       
-            
-        
-        $form['dj_viewbundle_figures[figure_Name]'] = 'John Doe1234';
-        $form['dj_viewbundle_figures[categories]'] = 'ski';
-        $form['dj_viewbundle_figures[figureDescription]'] = 'une description';
-        $form['dj_viewbundle_figures[videofigure][__name__][videolink]'] = '<iframe width="560" height="315" src="https://www.youtube.com/embed/h9VG4oXz1VI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-        $form['dj_viewbundle_figures[picture][__name__][pictureLink]'] = __DIR__ . '/../../../web/images/seat belt.jpg'; 
-       
-        
-       $crawler = $this->client->submit($form);
-      */  
-        
-    }
-
-
-
-    /*
     
-    
-    public function testDetailFigure() {
-        
-    }
-        
-    
-    public function testDeleteFigure() {
-        
-    }
-    */
         
 }
