@@ -77,26 +77,7 @@ class DefaultControllerTest extends WebTestCase
         
     }
     
-    private function getcurrentlogin(){
-        
-        $client = $this->createClient();
-        
-        $crawler = $client->request('GET', '/login');
-        
-        $form = $crawler->selectButton('Connexion')->form();
-        
-        $form['_username'] = 'doctrine';
-        $form['_password'] = '123';
-        
-        $crawler = $client->submit($form);
-        
-        $crawler = $client->followRedirect();
-        
-        $this->crawler = $crawler;
-        $this->client =$client;
-        
-        
-    }
+
     
     
         
