@@ -2,8 +2,6 @@
 
 namespace DJ\viewBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -40,17 +38,6 @@ class FigureController extends Controller {
         
         $figure = $em->find($id);
         
-        $id = 67;
-        
-        $em2 = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Pictures');
-        
-        $mpicture = $em2->find($id);
-        
-        dump($figure);
-        
-        
-        
-        
     return $this->render('DJviewBundle:Advert:modify_viewfigure.html.twig', array('figure'=>$figure,
                                                                                   'noimage'=>'noimge.jpg'
         ));
@@ -76,11 +63,8 @@ class FigureController extends Controller {
         $result['sucess']=0;
         $result['image']= '';
         $result['id']='';
-        
-        
-        
+      
             
-        $picture = $em->getRepository('DJviewBundle:Pictures')->find($id);
         $namepicture = $picture->getPictureLink();
             
         $result['sucess']=1;
