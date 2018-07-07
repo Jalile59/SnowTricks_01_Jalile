@@ -14,7 +14,7 @@
 
 #imageacceuil{
 
-background-image: url('/SnowTricks_01//web/public/img/petit som avalanche.jpg');
+background-image: url('/public/img/imageacceuil.jpg');
 background-size: 100%; 
 border-radius: 0px; 
 background-repeat:no-repeat; 
@@ -244,7 +244,7 @@ p{
 @media Screen and (max-width: 640px){
 	#imageacceuil{
 		height: 450px;
-		background-image: url('/SnowTricks_01/web/public/img/fei-montagnes-enneigees-35-320-480.jpg');
+		background-image: url('/public/img/fei-montagnes-enneigees-35-320-480.jpg');
 		
 	}
 	
