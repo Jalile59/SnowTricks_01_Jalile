@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SecurityController extends Controller
 {
     
-    public function loginAction(Request $request){
+    public function loginAction(){
         
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
           return $this->redirectToRoute('d_jview_homepage');

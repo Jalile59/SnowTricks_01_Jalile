@@ -21,7 +21,7 @@ class CommentsRepository extends \Doctrine\ORM\EntityRepository
                     ->where('c.figureId = :id')
                     ->orderBy('c.commentCreateDate', 'DESC')
                     ->setFirstResult($firstResult*5)
-                    ->setMaxResults($maxResults = 5)
+                    ->setMaxResults(5)
                     ->setParameter('id', $id);
 
                     

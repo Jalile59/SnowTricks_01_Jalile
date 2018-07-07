@@ -68,7 +68,6 @@ class Pictures
      */
     public function setPictureLink( $pictureLink)
     {
-//        var_dump($pictureLink, $_FILES);
         // vérification pour les ajouts de fixtures
         
         
@@ -77,12 +76,9 @@ class Pictures
             $this->pictureLink = $pictureLink;
             
         }else{
-            
-           
+                    
         $nname = $this->newname($pictureLink);
-        
-        $test = $pictureLink->getClientOriginalExtension();
-        
+
         $pictureLink->move('../web/images/', $nname);
         
         $this->pictureLink = $nname;
