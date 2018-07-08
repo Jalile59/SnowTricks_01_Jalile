@@ -74,10 +74,10 @@
                     <div id="div{{ figure.id }}" class="col-md-2"style="margin-top: 5px">
                         <div class="row" >
                             <div class="col-lg-3 col-lg-offset-3" >
-                                <a href="javascript:void(0);" ><img idvideo="{{figure.id}}" id="mvideo{{figure.id}}" src="{{asset('public/img/bouton-modifier_318-77528.png')}}" alt="" onclick="modifvideo(this)"></a>
+                                <a href="#"  idvideo="{{ figure.id }}" onclick="suppVideo(this, event)"><img src="{{asset('public/img/supprimer.png')}}" alt=""></a>
                             </div>
                             <div class="col-lg-3" >
-                                <a href="#"  idvideo="{{ figure.id }}" onclick="suppVideo(this, event)"><img src="{{asset('public/img/supprimer.png')}}" alt=""></a>
+                                <a href="javascript:void(0);" ><img idvideo="{{figure.id}}" id="mvideo{{figure.id}}" src="{{asset('public/img/bouton-modifier_318-77528.png')}}" alt="" onclick="modifvideo(this)"></a>
                             </div>
                         </div>
                         
@@ -151,6 +151,7 @@
     <!-- /.container -->
     
 <script src="{{asset('public/jsp/ajax_description_update.js')}}"></script>
+
 <script src="{{asset('public/jsp/imageprincipale.js')}}"></script>
 
 <script src="{{asset('public/jsp/jquery.uploadfile.min.js')}}"></script>

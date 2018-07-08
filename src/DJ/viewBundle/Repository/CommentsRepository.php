@@ -31,11 +31,8 @@ class CommentsRepository extends \Doctrine\ORM\EntityRepository
         $page = new \Doctrine\ORM\Tools\Pagination\Paginator($q);
         
         $npage = count($page);
-        
-        dump($npage);
-        
-        
-        
+              
+               
         return  $q->getQuery()->getResult();
     }
     

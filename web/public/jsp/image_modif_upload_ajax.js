@@ -13,7 +13,7 @@ $(document).ready(function()
     $(elements[i]).uploadFile({
     
     
-    url:"../ajaxpicture/"+id+"/"+idarticle, // ma varible dans l'url vaut null.
+    url:"../ajaxpicture/"+id+"/"+idarticle, 
     fileName:"myfile",
     dragDrop:false,
     showDownload: false,
@@ -45,7 +45,8 @@ $(document).ready(function()
         
 
         element = document.getElementById(id);
-        url = '/SnowTricks_01/web/images/'+src
+        //url = '/SnowTricks_01/web/images/'+src
+        url = '/images/'+src
         element.setAttribute('src', url);
         sansup = element.getAttribute('src');
         console.log(id);

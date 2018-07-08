@@ -241,6 +241,10 @@ p{
     margin-bottom: 150px;
 }
 
+#fileuploader{
+    padding: 2px;
+}
+
 @media Screen and (max-width: 640px){
 	#imageacceuil{
 		height: 450px;

@@ -87,7 +87,6 @@ class FigureController extends Controller {
             
         $link = $_POST['link'];
         
-            //        var_dump($link);
         $em = $this->getDoctrine()->getManager();
         $videodata = $em->getRepository('DJviewBundle:Videos');
         $video = $videodata->find($id);
@@ -110,7 +109,6 @@ class FigureController extends Controller {
         
         $retourjson = new JsonResponse($result);
         
-//        var_dump($retourjson);
         
         
         return $retourjson;

@@ -53,14 +53,12 @@ class DefaultController extends Controller
             }
             
             $comments = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments')->pagination($id,$page);
-            
-            dump($comments);
-            
+           
+           
             $commentsNpage = $this->getDoctrine()->getManager()->getRepository('DJviewBundle:Comments')->findBy(array('figureId'=>$id));
             //retourn le nombre de commentaire.
             $totalcomments = count($commentsNpage);
             $totalpage = intval($totalcomments/5);
-            dump($totalpage);
 
             
             return $this->render('DJviewBundle:Advert:viewfigure.html.twig', array(
@@ -149,7 +147,6 @@ class DefaultController extends Controller
            
             $em = $this->getDoctrine()->getManager();
             $em->persist($figure);
-//            die(var_dump($file));
             $em->flush();
             
             $this->addFlash('notice', 'Save ok');
@@ -171,7 +168,6 @@ class DefaultController extends Controller
         
         $figure = $this->getDoctrine()->getRepository('DJviewBundle:Figures')->pagination(1,5);
         
-        dump($figure);
                 
         return $this->render('DJviewBundle:Advert:index.html.twig', array(
             'figure'=>$figure
