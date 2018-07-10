@@ -49,8 +49,9 @@ $(document).ready(function()
         url = '/images/'+src
         element.setAttribute('src', url);
         sansup = element.getAttribute('src');
-        console.log(id);
-        console.log(url);
-        console.log('Veridi apres modif = '+sansup);
+
+        
+        element2 =document.getElementById('pictureP');
+        element2.setAttribute('src', url);
         
     }

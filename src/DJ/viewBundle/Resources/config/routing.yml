@@ -6,6 +6,10 @@ d_jview_homepage:
 d_jview_detailfigure:
     path:    /figure/{name}/{id}/{page}
     defaults: {_controller: DJviewBundle:Default:detailfigure, page: 0}
+    requirements:
+        name: \D*
+        id: \d*
+        page: \d*
     
 
 d_jview_inscription:
@@ -20,22 +24,33 @@ d_jview_addfigure:
 d_jview_delfigure:
     path:    /supprimerFigure/{id}
     defaults: {_controller: DJviewBundle:Figure:delfigure}
+    requirements:
+        id: \d*
     
 d_jview_modification:
     path:    /modificationFigure/{id}
     defaults: {_controller: DJviewBundle:Figure:modificationfigure}
+    requirements:
+        id: \d*
     
 d_jview_modification_ajaxupload:
     path:    /ajaxpicture/{id}/{idarticle}
     defaults: {_controller: DJviewBundle:Figure:ajaxupload}
+    requirements:
+        id: \d*
+        idarticle: \d*
     
 d_jview_modification_ajaxvideo:
     path:    /test/{id}
     defaults: {_controller: DJviewBundle:Figure:ajaxvideo}
+    requirements:
+        id: \d*
     
 d_jview_modification_ajaxdesciption:
     path:    /updatedescription/{id}
     defaults: {_controller: DJviewBundle:Figure:ajaxupdatedescription}
+    requirements:
+        id: \d*
     
 d_jview_fakedata:
     path:    /fakedata
