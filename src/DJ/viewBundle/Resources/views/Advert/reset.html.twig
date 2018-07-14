@@ -11,26 +11,20 @@
                     </div>
                     <div class="panel-body" style="background-color: gainsboro">
                         {% if error %}
-                            <div class="alert alert-danger">{{ error.message }}</div>
+                            <div class="alert alert-danger">{{ error}}</div>
                         {% endif %}
-                        <form action="{{ path('login_check') }}" method="post">
+                        <form action="{{ path('d_jview_sendresetpass') }}" method="post">
                             <div class=row>
                                 <div class="col-md-4" >
-                                    <label for="username">Login :</label>
+                                    <label for="email">Adresse Mail :</label>
                                 </div>
                                 <div class="col-md-8" >
-                                    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+                                    <input type="email" id="mail" name="mail"  />
                                 </div>
-                                <div class="col-md-4" style="margin-top: 15px;">
-                                    <label for="password">Mot de passe :</label>
-                                </div>
-                                <div class="col-md-8" style="margin-top: 15px;">
-                                    <input type="password" id="password" name="_password" />
-                                </div>
+                                
                                 <br />
-                                <input type="submit" value="Connexion" />
+                                <input type="submit" value="Envoi" />
                             </div>
-                                 <a href="{{path('d_jview_resetpass')}}">Mot de passe oublié</a>
                         </form>
                     </div>
                 </div>

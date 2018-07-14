@@ -250,6 +250,42 @@ class DefaultController extends Controller
             }
     }
     
+    public function viewresetAction(){
+        
+        return $this->render('DJviewBundle:Advert:reset.html.twig',array('error'=>FALSE));
+    }
+    
+    
+        public function resendPasswordAction(Request $request){
+        
+    
+        $mail = $request->get('mail');
+      
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $user = $em->getRepository('DJusersecurityBundle:User')->findOneBy(array('mail'=>$mail));
+        
+        dump($user);
+        
+        if ($user){
+            
+            $message = \Swift_Message::newInstance()
+            ->setSubject('Inscription SnowTricks')
+            ->setFrom('SnowTrick@hotmail.com')
+            ->setTo($mail)
+            ->setBody($this->renderview('DJviewBundle:Advert:resetpass.html.twig',array('user'=>$user)),
+                                                                                              'text/html');
+            $this->addFlash('reset', 'un mail a été envoyé ');
+            return $this->redirectToRoute('d_jview_homepage');
+            
+        }else{
+              
+            return $this->render('DJviewBundle:Advert:reset.html.twig',array('error'=>'Adresse mail inconnu'));
+            
+            }
+        }
+    
     
     
 }
