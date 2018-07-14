@@ -64,4 +64,10 @@ d_jview_testmail:
     path:    /mailtest
     defaults: {_controller: DJviewBundle:Default:test_mail}
     
+d_jview_resetpass:
+    path:    /resetpassword
+    defaults: {_controller: DJviewBundle:Default:viewreset}
     
+d_jview_sendresetpass:
+    path:    /sendpassword
+    defaults: {_controller: DJviewBundle:Default:resendPassword}

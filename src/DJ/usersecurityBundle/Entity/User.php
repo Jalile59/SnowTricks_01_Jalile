@@ -5,6 +5,10 @@ namespace DJ\usersecurityBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 
 
 /**
@@ -12,6 +16,8 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="DJ\usersecurityBundle\Repository\UserRepository")
+ * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("mail", message="Cette figure existe déja !")
  */
  class User implements UserInterface
 {
@@ -38,6 +44,7 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, nullable=true, unique=true)
+     * @Assert\Length(max=15, maxMessage = "Le nom de la figure ne doit pas dépasser 15 caractéres.")
      */
     private $username;
 
@@ -65,7 +72,7 @@ use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=255)
+     * @ORM\Column(name="mail", type="string", length=255, unique=true)
      */
     private $mail;
 

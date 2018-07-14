@@ -11,6 +11,11 @@
             <a style="padding-top: 80px"> Sauvegardé avec sucess !</a>
         </div>
         {% endfor %}
+                {% for message in app.flashes('reset') %}
+        <div style="margin-bottom: 0px; text-align: center; ;" class="alert alert-success" role="alert" id="success">       
+            <a style="padding-top: 80px"> Un mail a été envoyé!</a>
+        </div>
+        {% endfor %}
         <!-- Jumbotron Header -->
         
         <header id="imageacceuil" class="jumbotron hero-spacer">
