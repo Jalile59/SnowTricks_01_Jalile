@@ -117,14 +117,15 @@ class FigureController extends Controller {
     
     function ajaxupdatedescriptionAction($id){
         
+
         $description = $_POST['description'];
+        
         
         $em = $this->getDoctrine()->getManager();
         
         $figuredata = $em->getRepository('DJviewBundle:Figures');
         
         $figure = $figuredata->find($id);
-        
         
         $figure->setFigureDescription($description);
         $figure->setFigureUpdatedate(new \DateTime());
@@ -135,6 +136,7 @@ class FigureController extends Controller {
         $result ['sucess']= 1;
         $result ['id']= $id;
         $result ['description'] = $description;
+     
         
         return new JsonResponse($result);
         
