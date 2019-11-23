@@ -1,3 +1,12 @@
+#listeBlog {
+	background-color: ;
+}
+
+#contentBlogList {
+  background-color: #ffd5d0;
+}
+
+
 #card{
 	margin: 15px; 
 	height: 450px;
@@ -14,7 +23,7 @@
 
 #imageacceuil{
 
-background-image: url('/public/img/imageacceuil.jpg');
+background-image: url('/public/img/porter-couleurs-pastels-1170x780.jpg');
 background-size: 100%; 
 border-radius: 0px; 
 background-repeat:no-repeat; 

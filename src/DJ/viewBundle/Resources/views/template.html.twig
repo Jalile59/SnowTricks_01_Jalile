@@ -11,7 +11,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 
-    <title>Freelancer</title>
+    <title>FeteBox</title>
     <!-- asset('bundles/ocplatform/css/main.css')  -->
     <!-- Bootstrap Core CSS -->
     {% stylesheets output="app/djview/public/css/main.css" filter = 'cssrewrite'
@@ -23,6 +23,7 @@
     'public/css/wbbtheme.css'
     'public/css/font-awesome.min.css'
     %}
+ 
     
     <link href="{{asset_url}}" rel="stylesheet">
     {% endstylesheets %}
@@ -82,7 +83,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="{{path('d_jview_homepage')}}">Bienvenue sur SnowTricks {% if app.user %}  {{app.user.username}} {% endif %}</a><br>
+                <a class="navbar-brand" href="{{path('d_jview_homepage')}}">Bienvenue sur Fetebox {% if app.user %}  {{app.user.username}} {% endif %}</a><br>
                 
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -92,7 +93,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="{{path('d_jview_homepage')}}">Figures</a>
+                        <a href="{{path('d_jview_blog_list')}}">Boutique</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="{{path('d_jview_blog_list')}}">Idee deco</a>
                     </li>
                     {% if app.user %}
                     <li class="page-scroll">
@@ -155,7 +159,7 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Localisation</h3>
-                        <p>Place de la liberté
+                        <p>Place de la libertÃ©
                             <br>83500, Toulon</p>
                     </div>
                     <div class="footer-col col-md-4">

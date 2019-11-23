@@ -186,4 +186,14 @@ class FigureController extends Controller {
         return new JsonResponse($result);
         }
     }
+    
+
+    function testAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $getFigure = $em->getRepository('DJviewBundle:Pictures');
+        $allFigure = $getFigure->findAll();
+        
+        return $this->render('DJviewBundle:Advert:blogListe.html.twig',);array('figures'=>$allFigure);
+    }
 }

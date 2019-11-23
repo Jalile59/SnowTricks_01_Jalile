@@ -71,3 +71,8 @@ d_jview_resetpass:
 d_jview_sendresetpass:
     path:    /sendpassword
     defaults: {_controller: DJviewBundle:Default:resendPassword}
+    
+d_jview_blog_list:
+    path:    /BlogListe
+    defaults: {_controller: DJviewBundle:Figure:test}
+    
