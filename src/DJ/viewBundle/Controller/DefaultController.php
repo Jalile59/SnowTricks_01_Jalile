@@ -89,8 +89,8 @@ class DefaultController extends Controller
             
             
             $message = \Swift_Message::newInstance()
-            ->setSubject('Inscription SnowTricks')
-            ->setFrom('SnowTrick@hotmail.com')
+            ->setSubject('Inscription FeteBox')
+            ->setFrom('FeteBox@hotmail.com')
             ->setTo($users->getMail())
             ->setBody($this->renderview('DJviewBundle:Advert:confirmation_mail.html.twig',array('name'=>$users->getUsername())),'text/html');
         

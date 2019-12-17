@@ -257,12 +257,13 @@ p{
 @media Screen and (max-width: 640px){
 	#imageacceuil{
 		height: 450px;
-		background-image: url('/public/img/fei-montagnes-enneigees-35-320-480.jpg');
+		background-image: url('/public/img/porter-couleurs-pastels-320x480.png');
 		
 	}
 	
 	#footer{
             display: none;
+            background-color: 
 	}
 	
 	#mainNav_footer{
